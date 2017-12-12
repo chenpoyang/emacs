@@ -649,6 +649,7 @@
     ggtags-mode
     projectile-mode
     undo-tree-mode
+    helm-gtags-mode
     company-mode))
 
 (defun purge-minor-modes ()
