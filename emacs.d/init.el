@@ -27,7 +27,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php ac-php-core php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php ac-php-core php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -224,24 +224,16 @@
     (select-window (active-minibuffer-window))))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 "---------------------------------------------------------------------------"
-;;ac-php: auto-completion source for phpauto-completion source for php
-(require 'cl)
-(require 'php-mode)
-
-(add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.engine$" . php-mode))
-
-(add-hook 'php-mode-hook '(lambda ()
-                            (auto-complete-mode t)
-                            (require 'ac-php)
-                            (setq ac-sources  '(ac-source-php))
-                            (yas-global-mode 1)
-
-                            (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
-                            (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
-                            ))
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (require 'company-php)
+             (company-mode t)
+	     
+             (ac-php-core-eldoc-setup) ;; enable eldoc
+	     (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point) ;; goto define
+	     (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)  ;; go back
+             (make-local-variable 'company-backends)
+             (add-to-list 'company-backends 'company-ac-php-backend)))
 "---------------------------------------------------------------------------"
 ;; php indent
 (defun wicked/php-mode-init ()
@@ -339,7 +331,7 @@
 ;;(add-hook 'after-init-hook 'global-company-mode)
 ;;(setq company-global-modes '(not php-mode))
 ;;(setq company-global-modes '(not html-mode))
-;;(global-company-mode 1)
+(global-company-mode 1)
 
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 (setq company-backends (delete 'company-semantic company-backends))
