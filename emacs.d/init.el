@@ -636,6 +636,7 @@
     irony-mode
     tern-mode
     ggtags-mode
+    projectile-mode
     company-mode))
 
 (defun purge-minor-modes ()
@@ -656,6 +657,7 @@
 "---------------------------------------------------------------------------"
 ;; emacs magit
 (require 'magit)
+(global-magit-file-mode)
 (global-set-key (kbd "C-x g") 'magit-status)
 "---------------------------------------------------------------------------"
 ;; headline in file(show function lists(variables)?)
