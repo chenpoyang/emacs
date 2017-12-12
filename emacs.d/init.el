@@ -42,6 +42,8 @@
   (interactive "*")
   (insert (format-time-string "[%Y-%m-%d %H:%M:%S]" (current-time))))
 ;;(insert (format-time-string "%Y-%m-%d" (current-time))))
+
+(global-set-key (kbd "s-D") 'dired)
 (global-set-key "\C-xd" 'insert-current-date)
 
 ;; 指针颜色设置为白色
