@@ -464,6 +464,9 @@
           ": " (or "fatal error" "error") ": " (message) line-end))
   :modes (c-mode c++-mode)
   :next-checkers ((warnings-only . c/c++-cppcheck)))
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 "---------------------------------------------------------------------------"
 ;; yasnippet
 (yas-global-mode t)
