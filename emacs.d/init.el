@@ -553,15 +553,13 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-;; use ggtags-find-tag-dwim(M-.) instead of helm-gtags-find-tag(M-.)
-;(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
-;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-
 (custom-set-variables
  '(helm-gtags-prefix-key "\C-t")
  '(helm-gtags-suggested-key-mapping t))
 
+;; M-. and M-, aleady define in global map in xref, rebind it
 (with-eval-after-load 'helm-gtags
+  (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
 "---------------------------------------------------------------------------"
 ;; helm-swoop
