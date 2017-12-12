@@ -65,7 +65,7 @@
 "---------------------------------------------------------------------------"
 ;; 文件编码
 ;; Default coding system (for new files)
-(setq default-buffer-file-coding-system 'utf-8)
+(setq buffer-file-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -316,6 +316,8 @@
 			   (company-mode)))
 "---------------------------------------------------------------------------"
 ;; irony-mode
+(require 'irony)
+
 (defun my-irony-mode-on ()
   ;; avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
   (when (member major-mode irony-supported-major-modes)
@@ -336,7 +338,6 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 "---------------------------------------------------------------------------"
 ;; company-mode
-(require 'irony)
 (require 'company)
 
 ;;(add-hook 'after-init-hook 'global-company-mode)
@@ -480,6 +481,7 @@
 ;;(color-theme-tango)
 "---------------------------------------------------------------------------"
 ;; emacs mew mail client
+(require 'mew)
 (setq mew-ssl-verify-level 0)
 (setq mew-use-cached-passwd t)
 (setq mew-prog-ssl "/usr/local/bin/stunnel3")
@@ -561,6 +563,8 @@
 	    (local-set-key "\C-xz" 'ff-find-other-file)))
 "---------------------------------------------------------------------------"
 ;; python
+(require 'python-environment)
+
 (add-hook 'python-mode-hook (lambda()
 			      (elpy-mode)
 			      (yas-minor-mode)))
@@ -570,7 +574,7 @@
 "---------------------------------------------------------------------------"
 ;; emacs-helm
 (require 'helm-config)
-
+(require 'helm)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -584,6 +588,7 @@
 (helm-mode t)
 
 ;; when helm buffer appears, don't hide and show other buffer
+(require 'shackle)
 (setq helm-display-function #'pop-to-buffer)
 (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)))
 (shackle-mode)
@@ -603,6 +608,7 @@
   (define-key ggtags-mode-map (kbd "C-c M-i") nil))
 "---------------------------------------------------------------------------"
 ;; helm-swoop
+(require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
@@ -638,7 +644,9 @@
 (global-set-key (kbd "<f2>") 'open-my-init-file)
 "---------------------------------------------------------------------------"
 ;; org-mode
+(require 'org)
 (global-set-key (kbd "C-c w") 'org-pomodoro)
+
 (setq org-log-done t)
 
 (add-hook 'org-mode-hook
