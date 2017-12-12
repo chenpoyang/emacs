@@ -131,7 +131,7 @@
 	;; this will make sure spaces are used instead of tabs
 	indent-tabs-mode nil)
   ;; we like auto-newline and hungry-delete
-  (c-toggle-auto-hungry-state 1)
+  (c-toggle-auto-hungry-state t)
   ;;auto indent while press 'Enter'
   (global-set-key (kbd "RET") 'newline-and-indent)
   ;; key bindings for all supported languages.  We can put these in
@@ -678,9 +678,9 @@
 (setq evil-default-state 'emacs)
 "---------------------------------------------------------------------------"
 (require 'projectile)
-(projectile-mode)
-
-(global-set-key (kbd "C-c p h") 'helm-projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
