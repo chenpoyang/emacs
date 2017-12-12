@@ -427,6 +427,9 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 "---------------------------------------------------------------------------"
 ;; yasnippet
 (yas-global-mode t)
