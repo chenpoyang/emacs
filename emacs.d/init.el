@@ -27,7 +27,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php ac-php-core php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php ac-php-core php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -427,9 +427,6 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 "---------------------------------------------------------------------------"
 ;; yasnippet
 (yas-global-mode t)
@@ -550,6 +547,22 @@
 (setq helm-display-function #'pop-to-buffer)
 (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)))
 (shackle-mode)
+"---------------------------------------------------------------------------"
+;; helm-gtags
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+;; use ggtags-find-tag-dwim(M-.) instead of helm-gtags-find-tag(M-.)
+;(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+
+(custom-set-variables
+ '(helm-gtags-prefix-key "\C-t")
+ '(helm-gtags-suggested-key-mapping t))
+
+(with-eval-after-load 'helm-gtags
+  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
 "---------------------------------------------------------------------------"
 ;; helm-swoop
 (global-set-key (kbd "M-i") 'helm-swoop)
