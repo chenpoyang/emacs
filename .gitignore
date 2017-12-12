@@ -6,6 +6,7 @@
 \.org-id-locations
 tramp
 ac-comphist\.dat
+*.eld
 bookmarks
 abbrev_defs
 emacs\.d/flycheck_init\.el
@@ -19,7 +20,7 @@ emacs\.d/recentf
 emacs\.d/snippets/**
 emacs\.d/tutorial/**
 emacs\.d/eshell/**
-emacs.d/packages/git-emacs/**
-emacs.d/packages/git-emacs
-emacs.d/packages/ecb/**
-emacs.d/packages/ecb
+emacs\.d/packages/git-emacs/**
+emacs\.d/packages/git-emacs
+emacs\.d/packages/ecb/**
+emacs\.d/packages/ecb
