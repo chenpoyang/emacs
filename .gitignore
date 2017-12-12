@@ -19,4 +19,6 @@ emacs\.d/snippets/**
 emacs\.d/tutorial/**
 emacs\.d/eshell/**
 emacs.d/packages/git-emacs/**
+emacs.d/packages/git-emacs
 emacs.d/packages/ecb/**
+emacs.d/packages/ecb
