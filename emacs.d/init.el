@@ -491,7 +491,6 @@
 (define-key web-mode-map (kbd "C-c w") 'web-mode)
 (define-key web-mode-map (kbd "C-c c") 'company-mode)
 (define-key web-mode-map (kbd "C-c e") 'emmet-mode)
-(global-set-key (kbd "C-c p l") 'package-list-packages)
 (global-set-key (kbd "C-h C-f") 'find-function-at-point)
 (global-set-key (kbd "C-h C-v") 'find-variable-at-point)
 (global-set-key "\C-cV" 'visit-tags-table)
@@ -631,6 +630,7 @@
     tern-mode
     ggtags-mode
     projectile-mode
+    undo-tree-mode
     company-mode))
 
 (defun purge-minor-modes ()
