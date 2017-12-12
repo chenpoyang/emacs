@@ -367,7 +367,7 @@
 "---------------------------------------------------------------------------"
 ;;git-emacs
 (add-to-list 'load-path "~/.emacs.d/packages/git-emacs/")
-;(require 'git-emacs)
+;;(require 'git-emacs)
 "---------------------------------------------------------------------------"
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
