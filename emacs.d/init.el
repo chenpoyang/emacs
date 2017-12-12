@@ -24,6 +24,12 @@
  '(exec-path
    (quote
     ("/opt/local/bin/" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin")))
+ '(helm-boring-file-regexp-list
+   (quote
+    ("\\." "\\.o$" "~$" "\\.bin$" "\\.lbin$" "\\.so$" "\\.a$" "\\.ln$" "\\.blg$" "\\.bbl$" "\\.elc$" "\\.lof$" "\\.glo$" "\\.idx$" "\\.lot$" "\\.svn/\\|\\.svn$" "\\.hg/\\|\\.hg$" "\\.git/\\|\\.git$" "\\.bzr/\\|\\.bzr$" "CVS/\\|CVS$" "_darcs/\\|_darcs$" "_MTN/\\|_MTN$" "\\.fmt$" "\\.tfm$" "\\.class$" "\\.fas$" "\\.lib$" "\\.mem$" "\\.x86f$" "\\.sparcf$" "\\.dfsl$" "\\.pfsl$" "\\.d64fsl$" "\\.p64fsl$" "\\.lx64fsl$" "\\.lx32fsl$" "\\.dx64fsl$" "\\.dx32fsl$" "\\.fx64fsl$" "\\.fx32fsl$" "\\.sx64fsl$" "\\.sx32fsl$" "\\.wx64fsl$" "\\.wx32fsl$" "\\.fasl$" "\\.ufsl$" "\\.fsl$" "\\.dxl$" "\\.lo$" "\\.la$" "\\.gmo$" "\\.mo$" "\\.toc$" "\\.aux$" "\\.cp$" "\\.fn$" "\\.ky$" "\\.pg$" "\\.tp$" "\\.vr$" "\\.cps$" "\\.fns$" "\\.kys$" "\\.pgs$" "\\.tps$" "\\.vrs$" "\\.pyc$" "\\.pyo$")))
+ '(helm-ff-skip-boring-files t)
+ '(helm-gtags-prefix-key "")
+ '(helm-gtags-suggested-key-mapping t)
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
@@ -553,14 +559,14 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-(custom-set-variables
- '(helm-gtags-prefix-key "\C-t")
- '(helm-gtags-suggested-key-mapping t))
+
 
 ;; M-. and M-, aleady define in global map in xref, rebind it
 (with-eval-after-load 'helm-gtags
   (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
-  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
+  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+  "conflict with helm-swool"
+  (define-key ggtags-mode-map (kbd "C-c M-i") nil))
 "---------------------------------------------------------------------------"
 ;; helm-swoop
 (global-set-key (kbd "M-i") 'helm-swoop)
