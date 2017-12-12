@@ -1,0 +1,13 @@
+*.cache
+*.elc
+*.txt
+*.png
+emacs\.d/auto-save-list/*
+emacs\.d/auto-save-list/*/*
+emacs\.d/elpa/*
+emacs\.d/elpa/*/*
+emacs\.d/elpa/*/*/*
+emacs\.d/elpa/*/*/*/*
+emacs\.d/ur/*
+emacs\.d/ur/*/*
+emacs\.d/ur/*/*/*
