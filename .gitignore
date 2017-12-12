@@ -8,6 +8,7 @@ tramp
 ac-comphist\.dat
 bookmarks
 abbrev_defs
+emacs\.d/flycheck_init\.el
 emacs\.d/auto-save-list/**
 emacs\.d/elpa/**
 emacs\.d/url/**
