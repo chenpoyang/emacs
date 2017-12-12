@@ -434,11 +434,36 @@
             ))
 "---------------------------------------------------------------------------"
 ;; flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+(flycheck-define-checker c/c++-clang
+  "A C/C++ syntax checker using Clang."
+  :command ("clang"
+            "-fsyntax-only"
+            "-fno-color-diagnostics"    ; Do not include color codes in output
+            "-fno-caret-diagnostics"    ; Do not visually indicate the source
+                                        ; location
+            "-fno-diagnostics-show-option" ; Do not show the corresponding
+                                        ; warning group
+            (option "-std=" flycheck-clang-language-standard)
+            (option-flag "-fno-rtti" flycheck-clang-no-rtti)
+            (option-list "-include" flycheck-clang-includes)
+            (option-list "-W" flycheck-clang-warnings s-prepend)
+            (option-list "-D" flycheck-clang-definitions s-prepend)
+            (option-list "-I" flycheck-clang-include-path)
+            "-x" (eval
+                  (cl-case major-mode
+                    (c++-mode "c++")
+                    (c-mode "c"))) source-inplace)
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column
+            ": warning: " (message) line-end)
+   (error line-start (file-name) ":" line ":" column
+          ": " (or "fatal error" "error") ": " (message) line-end))
+  :modes (c-mode c++-mode)
+  :next-checkers ((warnings-only . c/c++-cppcheck)))
 "---------------------------------------------------------------------------"
 ;; yasnippet
 (yas-global-mode t)
