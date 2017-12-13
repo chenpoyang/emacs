@@ -116,8 +116,6 @@
 ;; 显示列号
 (setq column-number-mode t)
 (setq line-number-mode t)
-;; 使用 C++ mode
-(add-to-list 'auto-mode-alist (cons "\\.h$" #'c++-mode))
 "---------------------------------------------------------------------------"
 ;;设置缩进
 (setq indent-tabs-mode nil)
@@ -535,19 +533,6 @@
 			   (company-mode)
 			   (tern-mode)))
 "---------------------------------------------------------------------------"
-(add-hook 'emacs-lisp-mode-hook (lambda()
-				  (company-mode)))
-
-(add-hook 'css-mode-hook (lambda()
-			   (company-mode)))
-
-(add-to-list 'auto-mode-alist (cons "\\.c$" #'c++-mode))
-(add-hook 'c++-mode-hook (lambda()
-			   (company-mode)))
-
-(add-hook 'objc-mode-hook (lambda()
-			    (company-mode)))
-"---------------------------------------------------------------------------"
 "c/c++ opening corresponding header file"
 (add-hook 'c-mode-common-hook
 	  (lambda()
@@ -736,5 +721,6 @@
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
+;;(load "cpp-init.el")
 ;;(load "objc-init.el")
 "---------------------------------------------------------------------------"
