@@ -393,9 +393,9 @@
 	    (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
 	      (ggtags-mode 1))))
 "---------------------------------------------------------------------------"
-;;git-emacs, only use the status icons features, prefix(C-x g) use magit instread
+;;git-emacs use magit instead
 (add-to-list 'load-path "~/.emacs.d/packages/git-emacs/")
-(require 'git-emacs)
+;(require 'git-emacs)
 "---------------------------------------------------------------------------"
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
