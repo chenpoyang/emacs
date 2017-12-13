@@ -624,6 +624,13 @@
 
 (setq org-log-done t)
 
+(defun custom_org_auto_check()
+  (org-update-checkbox-count t))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+	    (add-hook 'after-save-hook 'custom_org_auto_check nil 'make-it-local)))
+
 (add-hook 'org-mode-hook
 	  (lambda()
 	    (company-mode)
