@@ -43,7 +43,7 @@
 "---------------------------------------------------------------------------"
 ;; 关闭烦人的出错时的提示声。
 (setq visible-bell t)
-;; disable startup splash screen
+;;disable startup splash screen
 ;;(setq inhibit-startup-screen t)
 "---------------------------------------------------------------------------"
 ;;Insert-current-date
