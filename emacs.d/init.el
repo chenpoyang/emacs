@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ;;("marmalade" . "http://marmalade-repo.org/packages/")
-			 ;;("melpa" . "http://melpa.milkbox.net/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")
 			 ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
 			 ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 (setq package-enable-at-startup nil)
@@ -43,6 +43,7 @@
 "---------------------------------------------------------------------------"
 ;; 关闭烦人的出错时的提示声。
 (setq visible-bell t)
+(setq ring-bell-function 'ignore)
 ;;disable startup splash screen
 ;;(setq inhibit-startup-screen t)
 "---------------------------------------------------------------------------"
