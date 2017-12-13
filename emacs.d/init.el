@@ -79,7 +79,7 @@
 
 (global-set-key (kbd "C-c D") 'delete-file-and-buffer)
 "---------------------------------------------------------------------------"
-;; 文件编码
+;; file encoding
 ;; Default coding system (for new files)
 (setq buffer-file-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
