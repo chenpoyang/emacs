@@ -52,6 +52,7 @@
   (insert (format-time-string "[%Y-%m-%d %H:%M:%S]" (current-time))))
 ;;(insert (format-time-string "%Y-%m-%d" (current-time))))
 
+(setq mac-option-modifier 'super)
 (global-set-key (kbd "s-D") 'dired)
 (global-set-key "\C-xd" 'insert-current-date)
 
