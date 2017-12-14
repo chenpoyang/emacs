@@ -814,5 +814,6 @@
 	    (local-set-key "\C-cE" 'create-objc-tags)
             (local-set-key "\C-xz" 'ff-find-other-file)))
 "---------------------------------------------------------------------------"
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; .h use c-mode or cpp-mode
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 "---------------------------------------------------------------------------"
