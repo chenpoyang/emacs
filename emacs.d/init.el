@@ -570,9 +570,8 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
-;; conflicts with helm-gtags
-(global-set-key (kbd "C-c r b") 'helm-bookmarks)
-(global-set-key (kbd "C-c r f") 'helm-recentf)
+(global-set-key (kbd "C-c m b") 'helm-bookmarks)
+(global-set-key (kbd "C-c m r") 'helm-recentf)
 (global-set-key (kbd "C-c d b") 'bookmark-delete)
 (global-set-key (kbd "C-c d r") 'recentf-edit-list)
 
@@ -596,6 +595,8 @@
 
 ;; M-. and M-, aleady define in global map in xref, rebind it
 (with-eval-after-load 'helm-gtags
+  ;; C-c d b, C-c d r, use as global keybindings, use M-. instread of C-c d
+;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
   (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
   "conflict with helm-swool"
