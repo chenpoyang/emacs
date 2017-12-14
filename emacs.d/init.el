@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -759,6 +759,14 @@
                                   company-yasnippet))))
 
 (add-hook 'lua-mode-hook #'my-lua-mode-company-init)
+"---------------------------------------------------------------------------"
+;; go
+(require 'company-go)
+
+(add-hook 'go-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends) '(company-go))
+	    (company-mode)))
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
