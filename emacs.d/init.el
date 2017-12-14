@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -773,6 +773,17 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
+"---------------------------------------------------------------------------"
+;; nodejs repl
+(require 'nodejs-repl)
+
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (define-key js2-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-expression)
+            (define-key js2-mode-map (kbd "C-c C-l") 'nodejs-repl-send-line)
+            (define-key js2-mode-map (kbd "C-c C-j") 'nodejs-repl-send-region)
+            (define-key js2-mode-map (kbd "C-c C-f") 'nodejs-repl-load-file)
+            (define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
