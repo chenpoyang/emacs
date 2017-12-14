@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -818,6 +818,9 @@
           (lambda()
 	    (local-set-key "\C-cE" 'create-objc-tags)
             (local-set-key "\C-xz" 'ff-find-other-file)))
+"---------------------------------------------------------------------------"
+;; emacs erlang
+(require 'erlang-start)
 "---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
