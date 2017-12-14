@@ -356,13 +356,13 @@
 (setq web-mode-style-padding 2)
 (setq web-mode-script-padding 2)
 (setq web-mode-block-padding 2)
-(add-hook 'web-mode-hook (lambda()
-			   (emmet-mode)))
 
-(define-prefix-command 'web-mode-map)
-(global-set-key (kbd "C-c w c") 'tern-mode)
-(global-set-key (kbd "C-c w p") 'php-mode)
-(global-set-key (kbd "C-c w e") 'emmet-mode)
+(add-hook 'web-mode-hook
+	  (lambda()
+	    (emmet-mode)
+	    (local-set-key (kbd "C-c m t") 'tern-mode)
+	    (local-set-key (kbd "C-c m p") 'php-mode)
+	    (local-set-key (kbd "C-c m e") 'emmet-mode)))
 "---------------------------------------------------------------------------"
 ;; irony-mode
 (require 'irony)
