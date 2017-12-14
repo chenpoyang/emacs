@@ -358,6 +358,11 @@
 (setq web-mode-block-padding 2)
 (add-hook 'web-mode-hook (lambda()
 			   (emmet-mode)))
+
+(define-prefix-command 'web-mode-map)
+(global-set-key (kbd "C-c w c") 'tern-mode)
+(global-set-key (kbd "C-c w p") 'php-mode)
+(global-set-key (kbd "C-c w e") 'emmet-mode)
 "---------------------------------------------------------------------------"
 ;; irony-mode
 (require 'irony)
@@ -649,7 +654,6 @@
 "---------------------------------------------------------------------------"
 ;; org-mode
 (require 'org)
-(global-set-key (kbd "C-c w") 'org-pomodoro)
 
 (setq org-log-done t)
 
@@ -660,6 +664,7 @@
 	  (lambda()
 	    (company-mode)
 	    (local-set-key "\C-cl" 'org-store-link)
+	    (local-set-key "\C-cw" 'org-pomodoro)
 	    (local-set-key "\C-ca" 'org-agenda)))
 
 (setq org-agenda-custom-commands
