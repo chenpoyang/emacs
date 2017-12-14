@@ -346,8 +346,7 @@
 (setq web-mode-script-padding 2)
 (setq web-mode-block-padding 2)
 (add-hook 'web-mode-hook (lambda()
-			   (emmet-mode)
-			   (company-mode)))
+			   (emmet-mode)))
 "---------------------------------------------------------------------------"
 ;; irony-mode
 (require 'irony)
@@ -536,11 +535,6 @@
 	  (smtp-server           "smtp.163.com")
           (smtp-ssl-port         "465"))))
 "---------------------------------------------------------------------------"
-(define-key web-mode-map (kbd "C-c t") 'tern-mode)
-(define-key web-mode-map (kbd "C-c p") 'php-mode)
-(define-key web-mode-map (kbd "C-c w") 'web-mode)
-(define-key web-mode-map (kbd "C-c c") 'company-mode)
-(define-key web-mode-map (kbd "C-c e") 'emmet-mode)
 (global-set-key (kbd "C-h C-f") 'find-function-at-point)
 (global-set-key (kbd "C-h C-v") 'find-variable-at-point)
 (global-set-key "\C-cV" 'visit-tags-table)
@@ -573,10 +567,13 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; conflicts with helm-gtags
 (global-set-key (kbd "C-c r b") 'helm-bookmarks)
 (global-set-key (kbd "C-c r f") 'helm-recentf)
 (global-set-key (kbd "C-c d b") 'bookmark-delete)
 (global-set-key (kbd "C-c d r") 'recentf-edit-list)
+
 (with-eval-after-load 'helm
   (helm-autoresize-mode t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action))
