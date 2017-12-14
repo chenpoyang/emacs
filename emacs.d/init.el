@@ -35,10 +35,18 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+"---------------------------------------------------------------------------"
+(defun sudo-find-file (file-name)
+  "Like find file, but opens the file as root."
+  (interactive "FSudo Find File: ")
+  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+    (find-file tramp-file-name)))
+
+(global-set-key (kbd "C-x C-r") 'sudo-find-file)
 "---------------------------------------------------------------------------"
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 "---------------------------------------------------------------------------"
@@ -741,6 +749,16 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+"---------------------------------------------------------------------------"
+;; lua
+(require 'company-lua)
+(defun my-lua-mode-company-init ()
+  (setq-local company-backends '((company-lua
+                                  company-etags
+                                  company-dabbrev-code
+                                  company-yasnippet))))
+
+(add-hook 'lua-mode-hook #'my-lua-mode-company-init)
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
