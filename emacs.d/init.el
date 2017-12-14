@@ -703,6 +703,7 @@
     undo-tree-mode
     helm-gtags-mode
     auto-revert-mode
+    js2-refactor-mode
     company-mode))
 
 (defun purge-minor-modes ()
