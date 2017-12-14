@@ -790,8 +790,29 @@
             (define-key js2-mode-map (kbd "C-c C-f") 'nodejs-repl-load-file)
             (define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
 "---------------------------------------------------------------------------"
-;; working space, may be conflit with other mode
-(add-to-list 'load-path "~/.emacs.d/packages/workspace")
-;;(load "cpp-init.el")
-;;(load "objc-init.el")
+;; .h .mm files add to objc-mode
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+
+;; header .h add to objc-mode
+(add-to-list 'magic-mode-alist
+	     `(,(lambda ()
+		  (and (string= (file-name-extension buffer-file-name) "h")
+		       (re-search-forward "@\\<interface\\>"
+					  magic-mode-regexp-match-limit t)))
+	       . objc-mode))
+
+;; etags for objc
+(defun create-objc-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.[hm]\" | etags -" dir-name)))
+
+;; key bindings, objc opening corresponding header file
+(add-hook 'objc-mode-hook
+          (lambda()
+	    (local-set-key "\C-cE" 'create-objc-tags)
+            (local-set-key "\C-xz" 'ff-find-other-file)))
+"---------------------------------------------------------------------------"
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 "---------------------------------------------------------------------------"
