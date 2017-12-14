@@ -23,7 +23,7 @@
  '(ediff-split-window-function (quote split-window-horizontally))
  '(exec-path
    (quote
-    ("/opt/local/bin/" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin")))
+    ("/usr/local/bin" "/opt/local/bin/" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin")))
  '(helm-boring-buffer-regexp-list
    (quote
     ("\\` " "\\`\\*helm" "\\`\\*Echo Area" "\\`\\*Minibuf" "\\`*magit" "\\`*Ediff")))
@@ -39,6 +39,8 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+"---------------------------------------------------------------------------"
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 "---------------------------------------------------------------------------"
 ;; 关闭烦人的出错时的提示声。
 (setq visible-bell t)
