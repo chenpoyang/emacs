@@ -767,6 +767,12 @@
 	  (lambda ()
 	    (set (make-local-variable 'company-backends) '(company-go))
 	    (company-mode)))
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq tab-width 4)
+            (setq indent-tabs-mode 1)))
 "---------------------------------------------------------------------------"
 ;; working space, may be conflit with other mode
 (add-to-list 'load-path "~/.emacs.d/packages/workspace")
