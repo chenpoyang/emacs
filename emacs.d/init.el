@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ;;("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/")
+			 ;("melpa" . "http://melpa.milkbox.net/packages/")
 			 ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
 			 ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 (setq package-enable-at-startup nil)
@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php ac-php-core php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
