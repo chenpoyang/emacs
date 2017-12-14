@@ -4,8 +4,8 @@
 ;; You may delete these explanatory comments.
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ;;("marmalade" . "http://marmalade-repo.org/packages/")
-			 ;("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")
+			 ;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
 			 ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 (setq package-enable-at-startup nil)
 (package-initialize)
