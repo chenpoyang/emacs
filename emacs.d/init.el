@@ -648,10 +648,6 @@
   (org-update-checkbox-count t))
 
 (add-hook 'org-mode-hook
-          (lambda ()
-	    (add-hook 'after-save-hook 'custom_org_auto_check nil 'make-it-local)))
-
-(add-hook 'org-mode-hook
 	  (lambda()
 	    (company-mode)
 	    (local-set-key "\C-cl" 'org-store-link)
