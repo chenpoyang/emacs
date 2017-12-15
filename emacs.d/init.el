@@ -76,7 +76,7 @@
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
 ;;disable startup splash screen
-;;(setq inhibit-startup-screen t)
+(setq inhibit-startup-screen t)
 "---------------------------------------------------------------------------"
 ;; maxmize
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
