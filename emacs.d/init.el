@@ -654,6 +654,16 @@
   (add-hook hook (lambda () (flyspell-mode -1))))
 
 (define-key flyspell-mode-map (kbd "C-;") 'helm-flyspell-correct)
+
+;; I highly suggest setting ‘flyspell-issue-message-flag’ to nil,
+;; as printing messages for every word (when checking the entire buffer)
+;; causes an enormous slowdown.
+(setq flyspell-issue-message-flag nil)
+
+;; Enable flyspell for comments in source code
+;;(add-hook 'c++-mode-hook
+;;          (lambda ()
+;;            (flyspell-prog-mode)))
 "---------------------------------------------------------------------------"
 ;; personal config
 (defun open-my-init-file()
