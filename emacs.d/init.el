@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -645,6 +645,15 @@
 
 ;;Optional face for line numbers
 (setq helm-swoop-use-line-number-face t)
+"---------------------------------------------------------------------------"
+;; flyspell
+(require 'flyspell)
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+(define-key flyspell-mode-map (kbd "C-;") 'helm-flyspell-correct)
 "---------------------------------------------------------------------------"
 ;; personal config
 (defun open-my-init-file()
