@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (column-enforce-mode ace-jump-mode switch-window benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (powerline-evil powerline column-enforce-mode ace-jump-mode switch-window benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -65,6 +65,11 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
+;; powerline
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-center-evil-theme)
+(setq powerline-default-separator 'wave)
 "---------------------------------------------------------------------------"
 (defun sudo-find-file (file-name)
   "Like find file, but opens the file as root."
@@ -761,6 +766,7 @@
     helm-gtags-mode
     auto-revert-mode
     js2-refactor-mode
+    column-enforce-mode
     company-mode))
 
 (defun purge-minor-modes ()
@@ -770,7 +776,7 @@
       (when trg
         (setcar trg "")))))
 
-(add-hook 'after-change-major-mode-hook 'purge-minor-modes)
+;;(add-hook 'after-change-major-mode-hook 'purge-minor-modes)
 "---------------------------------------------------------------------------"
 ;; youdao-dictionary
 (setq url-automatic-caching t)
