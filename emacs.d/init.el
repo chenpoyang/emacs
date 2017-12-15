@@ -57,6 +57,9 @@
 ;;disable startup splash screen
 ;;(setq inhibit-startup-screen t)
 "---------------------------------------------------------------------------"
+;; maxmize
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+"---------------------------------------------------------------------------"
 ;; eshell prompt
 (defmacro with-face (str &rest properties)
      `(propertize ,str 'face (list ,@properties)))
