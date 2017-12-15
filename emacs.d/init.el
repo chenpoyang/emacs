@@ -764,6 +764,7 @@
     helm-gtags-mode
     auto-revert-mode
     js2-refactor-mode
+    autopair-mode
     company-mode))
 
 (defun purge-minor-modes ()
