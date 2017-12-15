@@ -144,11 +144,10 @@
 ;; obsolete variable:default-fill-column(23.2), use fill-column instead
 ;; (setq default-fill-column 80)
 (setq fill-column 80)
-;;显示行号
-(global-linum-mode t)
+;;显示行号(while programming)
+(add-hook 'prog-mode-hook #'linum-mode)
 ;; 显示列号
 (setq column-number-mode t)
-(setq line-number-mode t)
 "---------------------------------------------------------------------------"
 ;;设置缩进
 (setq indent-tabs-mode nil)
