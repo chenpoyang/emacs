@@ -35,14 +35,11 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (column-enforce-mode ace-jump-mode switch-window autopair benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (column-enforce-mode ace-jump-mode switch-window benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
-"---------------------------------------------------------------------------"
-(require 'autopair)
-(autopair-global-mode)
 "---------------------------------------------------------------------------"
 (require 'benchmark-init)
 ;; To disable collection of benchmark data after init is done.
@@ -764,7 +761,6 @@
     helm-gtags-mode
     auto-revert-mode
     js2-refactor-mode
-    autopair-mode
     company-mode))
 
 (defun purge-minor-modes ()
