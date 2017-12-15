@@ -303,49 +303,6 @@
     (select-window (active-minibuffer-window))))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 "---------------------------------------------------------------------------"
-(add-hook 'php-mode-hook
-          '(lambda ()
-             (require 'company-php)
-             (company-mode t)
-	     
-             (ac-php-core-eldoc-setup) ;; enable eldoc
-	     (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point) ;; goto define
-	     (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)  ;; go back
-             (make-local-variable 'company-backends)
-             (add-to-list 'company-backends 'company-ac-php-backend)))
-"---------------------------------------------------------------------------"
-;; php indent
-(defun wicked/php-mode-init ()
-  "Set some buffer-local variables."
-  (setq case-fold-search t) 
-  (setq indent-tabs-mode nil)
-  (setq fill-column 78)
-  (setq c-basic-offset 4)
-  (setq tab-width 4)
-;;  (setq default-tab-width 4)
-  (setq case-fold-search t)
-  (c-set-offset 'arglist-close '0)
-  (c-set-offset 'arglist-cont 0)
-  (c-set-offset 'arglist-intro '+)
-  (c-set-offset 'case-label 4)
-  (c-set-offset 'inline 0) ; function {} indent
-  (c-set-offset 'inline-open 0 )
-  (c-set-offset 'arglist-close 0))
-
-(defun my-php-indent-setup ()
-  (c-set-offset 'topmost-intro '+) ; Does not affect <?php (but affects ?>)
-  (c-set-offset 'inclass 0))       ; Gets the inside of class{} back to normal
-
-;; public function indent;
-(add-hook 'php-mode-hook '(lambda ()
-			    (setq tab-width 4
-				  indent-tabs-mode t)
-			    (c-set-style "symfony2")
-			    ))
-
-(add-hook 'php-mode-hook 'my-php-indent-setup)
-(add-hook 'php-mode-hook 'wicked/php-mode-init)
-"---------------------------------------------------------------------------"
 ;;ac-html补全 use company instead
 ;;(require 'ac-html)
 ;;(add-hook 'html-mode-hook 'ac-html-enable)
@@ -424,6 +381,54 @@
 (setq company-idle-delay 0)
 ;;(define-key c-mode-map [(tab)] 'company-complete)
 ;;(define-key c++-mode-map [(tab)] 'company-complete)
+"---------------------------------------------------------------------------"
+;; company-irony; C, C++ and Objective-C  completion backend
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+"---------------------------------------------------------------------------"
+;; php
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (require 'company-php)
+             (company-mode t)
+
+             (ac-php-core-eldoc-setup) ;; enable eldoc
+	     (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point) ;; goto define
+	     (define-key php-mode-map (kbd "C-t") 'ac-php-location-stack-back)  ;; go back
+             (make-local-variable 'company-backends)
+             (add-to-list 'company-backends 'company-ac-php-backend)))
+
+;; php indent
+(defun wicked/php-mode-init ()
+  "Set some buffer-local variables."
+  (setq case-fold-search t) 
+  (setq indent-tabs-mode nil)
+  (setq fill-column 78)
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
+  ;; (setq default-tab-width 4)
+  (setq case-fold-search t)
+  (c-set-offset 'arglist-close '0)
+  (c-set-offset 'arglist-cont 0)
+  (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'case-label 4)
+  (c-set-offset 'inline 0) ; function {} indent
+  (c-set-offset 'inline-open 0 )
+  (c-set-offset 'arglist-close 0))
+
+(defun my-php-indent-setup ()
+  (c-set-offset 'topmost-intro '+) ; Does not affect <?php (but affects ?>)
+  (c-set-offset 'inclass 0))       ; Gets the inside of class{} back to normal
+
+;; public function indent;
+(add-hook 'php-mode-hook '(lambda ()
+			    (setq tab-width 4
+				  indent-tabs-mode t)
+			    (c-set-style "symfony2")
+			    ))
+
+(add-hook 'php-mode-hook 'my-php-indent-setup)
+(add-hook 'php-mode-hook 'wicked/php-mode-init)
 "---------------------------------------------------------------------------"
 ;; company-tern and company-mode for javascript auto-completion
 (require 'company-tern)
@@ -508,10 +513,10 @@
 "---------------------------------------------------------------------------"
 ;; flycheck
 (require 'flycheck)
-(require 'flycheck-irony)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
+(require 'flycheck-irony)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 "---------------------------------------------------------------------------"
