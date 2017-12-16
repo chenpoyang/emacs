@@ -5,7 +5,7 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ;;("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")
-			 ;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+			 ;;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
 			 ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -41,16 +41,12 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 "---------------------------------------------------------------------------"
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
-"---------------------------------------------------------------------------"
-;; which-key
-(require 'which-key)
-(which-key-mode)
-"---------------------------------------------------------------------------"
-(require 'benchmark-init)
-;; To disable collection of benchmark data after init is done.
-(add-hook 'after-init-hook 'benchmark-init/deactivate)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 "---------------------------------------------------------------------------"
 (require 'doom-themes)
 
@@ -78,44 +74,37 @@
 (powerline-center-evil-theme)
 (setq powerline-default-separator 'wave)
 "---------------------------------------------------------------------------"
-(defun sudo-find-file (file-name)
-  "Like find file, but opens the file as root."
-  (interactive "FSudo Find File: ")
-  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
-    (find-file tramp-file-name)))
-
-(global-set-key (kbd "s-r") 'sudo-find-file)
+;;change directory
+(cd "~/")
 "---------------------------------------------------------------------------"
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-"---------------------------------------------------------------------------"
-;; 关闭烦人的出错时的提示声。
+;; close the ring bell and warning icon
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
 ;;disable startup splash screen
 (setq inhibit-startup-screen t)
 "---------------------------------------------------------------------------"
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+"---------------------------------------------------------------------------"
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+"---------------------------------------------------------------------------"
 ;; maxmize
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 "---------------------------------------------------------------------------"
-;; eshell prompt
-(defmacro with-face (str &rest properties)
-     `(propertize ,str 'face (list ,@properties)))
-
-(defun shk-eshell-prompt ()
-  (let ((header-bg "#fff"))
-    (concat
-     (with-face (concat (eshell/pwd) " ") :background header-bg)
-     (with-face (format-time-string "(%Y-%m-%d %H:%M) " (current-time)) :background header-bg :foreground "#888")
-     (with-face
-      (or (ignore-errors (format "(%s)" (vc-responsible-backend default-directory))) "")
-      :background header-bg)
-     (with-face "\n" :background header-bg)
-     (if (= (user-uid) 0)
-	 (with-face "#" :foreground "red")
-       (with-face "$" :foreground "green"))
-     " ")))
-(setq eshell-prompt-function 'shk-eshell-prompt)
-(setq eshell-highlight-prompt nil)
+;; which-key
+(require 'which-key)
+(which-key-mode)
+"---------------------------------------------------------------------------"
+(require 'benchmark-init)
+;; To disable collection of benchmark data after init is done.
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
+"---------------------------------------------------------------------------"
+;; file encoding
+;; Default coding system (for new files)
+(setq buffer-file-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 "---------------------------------------------------------------------------"
 ;;Insert-current-date
 (defun insert-current-date ()
@@ -131,31 +120,6 @@
 (set-cursor-color "white")
 ;; 鼠标颜色设置为白色
 (set-mouse-color "white")
-"---------------------------------------------------------------------------"
-;;change directory
-(cd "~/")
-"---------------------------------------------------------------------------"
-;; delete file and buffer
-(defun delete-file-and-buffer()
-  "Kill the current buffer and deletes the file is is visiting."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (when filename
-      (if (vc-backend filename)
-	  (vc-delete-file filename)
-	(progn
-	  (delete-file filename)
-	  (message "Deleted file %s" filename)
-	  (kill-buffer))))))
-
-(global-set-key (kbd "C-c D") 'delete-file-and-buffer)
-"---------------------------------------------------------------------------"
-;; file encoding
-;; Default coding system (for new files)
-(setq buffer-file-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 "---------------------------------------------------------------------------"
 ;;不产生备份文件
 (setq make-backup-files nil)
@@ -185,6 +149,142 @@
 (add-hook 'prog-mode-hook #'linum-mode)
 ;; 显示列号
 (setq column-number-mode t)
+"---------------------------------------------------------------------------"
+;; open image file features on
+(auto-image-file-mode t)
+"---------------------------------------------------------------------------"
+;; Use ediff and not diff 
+(setq diff-command "ediff")
+(eval-after-load "vc-hooks"
+  '(define-key vc-prefix-map "=" 'ediff-revision))
+"---------------------------------------------------------------------------"
+;; yasnippet
+(yas-global-mode t)
+"---------------------------------------------------------------------------"
+;; emacs erlang
+(require 'erlang-start)
+"---------------------------------------------------------------------------"
+;; personal config
+(defun open-my-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+(global-set-key (kbd "<f2>") 'open-my-init-file)
+"---------------------------------------------------------------------------"
+(global-set-key (kbd "C-h C-f") 'find-function-at-point)
+(global-set-key (kbd "C-h C-v") 'find-variable-at-point)
+(global-set-key "\C-cV" 'visit-tags-table)
+"---------------------------------------------------------------------------"
+;; column-enforce-mode
+(add-hook 'prog-mode-hook 'column-enforce-mode)
+"---------------------------------------------------------------------------"
+;; ace-windows
+(global-set-key (kbd "C-;") 'ace-window);
+(setq aw-background nil)
+"---------------------------------------------------------------------------"
+;; ace-jump-mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; enable a more powerful jump back function from ace jump mode
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+"---------------------------------------------------------------------------"
+;; retitle emacs window
+(defun frame-retitle (title)
+  (modify-frame-parameters 
+   nil 
+   (list
+    (cons
+     'name
+     title
+     ))))
+
+;; set a beautiful title bar
+(setq frame-title-format
+      '("%S: " (buffer-file-name "%f"
+				 (dired-directory dired-directory "%b"))))
+"---------------------------------------------------------------------------"
+;;emacs welcome logo
+(defun use-fancy-splash-screens-p ()
+  "Return t if fancy splash screens should be used."
+  (when (and (display-graphic-p)
+	     (or (and (display-color-p)
+		      (image-type-available-p 'xpm))
+		 (image-type-available-p 'pbm)))
+    (let ((frame (fancy-splash-frame)))
+      (when frame
+	(let* ((img (create-image (fancy-splash-image-file)))
+	       (image-height (and img (cdr (image-size img nil frame))))
+	       ;; We test frame-height so that, if the frame is split
+	       ;; by displaying a warning, that doesn't cause the normal
+	       ;; splash screen to be used.
+	       (frame-height (1- (frame-height frame))))
+	  ;; The original value added to the `image-height' for the test was 19; however,
+	  ;; that causes the test to fail on X11 by about 1.5 -- so use 17 instead.
+	  (> frame-height (+ image-height 17)))))))
+"---------------------------------------------------------------------------"
+;;minibuffer奇怪
+(defun switch-to-minibuffer-window ()
+  "switch to minibuffer window (if active)"
+  (interactive)
+  (when (active-minibuffer-window)
+    (select-frame-set-input-focus (window-frame (active-minibuffer-window)))
+    (select-window (active-minibuffer-window))))
+(global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
+"---------------------------------------------------------------------------"
+(defun sudo-find-file (file-name)
+  "Like find file, but opens the file as root."
+  (interactive "FSudo Find File: ")
+  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+    (find-file tramp-file-name)))
+
+(global-set-key (kbd "s-r") 'sudo-find-file)
+"---------------------------------------------------------------------------"
+;; delete file and buffer
+(defun delete-file-and-buffer()
+  "Kill the current buffer and deletes the file is is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (if (vc-backend filename)
+	  (vc-delete-file filename)
+	(progn
+	  (delete-file filename)
+	  (message "Deleted file %s" filename)
+	  (kill-buffer))))))
+
+(global-set-key (kbd "C-c D") 'delete-file-and-buffer)
+"---------------------------------------------------------------------------"
+;; eshell prompt
+(defmacro with-face (str &rest properties)
+     `(propertize ,str 'face (list ,@properties)))
+
+(defun shk-eshell-prompt ()
+  (let ((header-bg "#fff"))
+    (concat
+     (with-face (concat (eshell/pwd) " ") :background header-bg)
+     (with-face (format-time-string "(%Y-%m-%d %H:%M) " (current-time)) :background header-bg :foreground "#888")
+     (with-face
+      (or (ignore-errors (format "(%s)" (vc-responsible-backend default-directory))) "")
+      :background header-bg)
+     (with-face "\n" :background header-bg)
+     (if (= (user-uid) 0)
+	 (with-face "#" :foreground "red")
+       (with-face "$" :foreground "green"))
+     " ")))
+(setq eshell-prompt-function 'shk-eshell-prompt)
+(setq eshell-highlight-prompt nil)
 "---------------------------------------------------------------------------"
 ;; enforce spaces for indentation, instead of tabs
 (setq-default indent-tabs-mode nil)
@@ -237,9 +337,6 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 "---------------------------------------------------------------------------"
-;;打开图片显示功能
-(auto-image-file-mode t)
-"---------------------------------------------------------------------------"
 ;;format while copy
 (dolist (command '(yank yank-pop))
   (eval
@@ -263,71 +360,6 @@
                      plain-tex-mode))
            (let ((mark-even-if-inactive transient-mark-mode))
              (indent-region (region-beginning) (region-end) nil))))))
-"---------------------------------------------------------------------------"
-;; Use ediff and not diff 
-(setq diff-command "ediff")
-(eval-after-load "vc-hooks"
-  '(define-key vc-prefix-map "=" 'ediff-revision))
-"---------------------------------------------------------------------------"
-;;load emacs ecb
-;;(add-to-list 'load-path "~/.emacs.d/packages/ecb")
-;;(require 'ecb)
-;;(global-set-key [(f10)] 'ecb-activate)
-;;(global-set-key [(C-f10)] 'ecb-deactivate)
-"---------------------------------------------------------------------------"
-;; retitle emacs window
-(defun frame-retitle (title)
-  (modify-frame-parameters 
-   nil 
-   (list
-    (cons
-     'name
-     title
-     ))))
-
-;; set a beautiful title bar
-(setq frame-title-format
-      '("%S: " (buffer-file-name "%f"
-				 (dired-directory dired-directory "%b"))))
-"---------------------------------------------------------------------------"
-;;emacs welcome logo
-(defun use-fancy-splash-screens-p ()
-  "Return t if fancy splash screens should be used."
-  (when (and (display-graphic-p)
-	     (or (and (display-color-p)
-		      (image-type-available-p 'xpm))
-		 (image-type-available-p 'pbm)))
-    (let ((frame (fancy-splash-frame)))
-      (when frame
-	(let* ((img (create-image (fancy-splash-image-file)))
-	       (image-height (and img (cdr (image-size img nil frame))))
-	       ;; We test frame-height so that, if the frame is split
-	       ;; by displaying a warning, that doesn't cause the normal
-	       ;; splash screen to be used.
-	       (frame-height (1- (frame-height frame))))
-	  ;; The original value added to the `image-height' for the test was 19; however,
-	  ;; that causes the test to fail on X11 by about 1.5 -- so use 17 instead.
-	  (> frame-height (+ image-height 17)))))))
-
-"---------------------------------------------------------------------------"
-;;minibuffer奇怪
-(defun switch-to-minibuffer-window ()
-  "switch to minibuffer window (if active)"
-  (interactive)
-  (when (active-minibuffer-window)
-    (select-frame-set-input-focus (window-frame (active-minibuffer-window)))
-    (select-window (active-minibuffer-window))))
-(global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
-"---------------------------------------------------------------------------"
-;;ac-html补全 use company instead
-;;(require 'ac-html)
-;;(add-hook 'html-mode-hook 'ac-html-enable)
-;;(add-hook 'web-mode-ac-sources-alist
-;;	  '("html" . (
-;;		      ;; attribute-value better to be first
-;;		      ac-source-html-attribute-value
-;;		      ac-source-html-tag
-;;		      ac-source-html-attribute)))
 "---------------------------------------------------------------------------"
 ;;web mode
 (require 'web-mode)
@@ -474,13 +506,6 @@
 (add-to-list 'load-path "~/.emacs.d/packages/git-emacs/")
 ;(require 'git-emacs)
 "---------------------------------------------------------------------------"
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-"---------------------------------------------------------------------------"
 ;; emacs javascript
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -503,16 +528,6 @@
 			   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 ;; js2-mode indent
-;;(defun js2-mode-indent-init()
-;;  (c-set-offset 'case-label '+)
-;;  (setq indent-tabs-mode t)
-;;  (setq js-indent-level 4)
-;;  (setq js-switch-indent-offset 4)
-;;  (setq js2-basic-offset 4)
-;;  (setq js2-indent-switch-body t))
-
-;;(add-hook 'js2-mode-hook 'js2-mode-indent-init)
-
 (add-hook 'js2-mode-hook
           (lambda ()
             (c-set-offset 'case-label '+)
@@ -535,17 +550,6 @@
 (require 'flycheck-irony)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-"---------------------------------------------------------------------------"
-;; yasnippet
-(yas-global-mode t)
-"---------------------------------------------------------------------------"
-;;(add-to-list 'load-path "~/.emacs.d/packages/color-theme-6.6.0")
-;;(require 'color-theme)
-;;(eval-after-load "color-theme"
-;;  '(progn
-;;     (color-theme-initialize)))
-;;(color-theme-blackboard)
-;;(color-theme-tango)
 "---------------------------------------------------------------------------"
 ;; emacs mew mail client
 (require 'mew)
@@ -594,10 +598,6 @@
 	  (smtp-user             "chenpoyang")
 	  (smtp-server           "smtp.163.com")
           (smtp-ssl-port         "465"))))
-"---------------------------------------------------------------------------"
-(global-set-key (kbd "C-h C-f") 'find-function-at-point)
-(global-set-key (kbd "C-h C-v") 'find-variable-at-point)
-(global-set-key "\C-cV" 'visit-tags-table)
 "---------------------------------------------------------------------------"
 ;; jsx-mode
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
@@ -649,8 +649,6 @@
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
-
-
 
 ;; M-. and M-, aleady define in global map in xref, rebind it
 (with-eval-after-load 'helm-gtags
@@ -748,12 +746,6 @@
   (append-aspell-word (thing-at-point 'word)))
 
 (define-key flyspell-mode-map (kbd "C-c C-a") 'append-aspell-current)
-"---------------------------------------------------------------------------"
-;; personal config
-(defun open-my-init-file()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-(global-set-key (kbd "<f2>") 'open-my-init-file)
 "---------------------------------------------------------------------------"
 ;; org-mode
 (require 'org)
@@ -924,36 +916,22 @@
 	    (local-set-key "\C-cE" 'create-objc-tags)
             (local-set-key "\C-xz" 'ff-find-other-file)))
 "---------------------------------------------------------------------------"
-;; emacs erlang
-(require 'erlang-start)
-"---------------------------------------------------------------------------"
-;; ace-windows
-(global-set-key (kbd "C-;") 'ace-window);
-(setq aw-background nil)
-"---------------------------------------------------------------------------"
-;; ace-jump-mode
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-;; you can select the key you prefer to
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-;; 
-;; enable a more powerful jump back function from ace jump mode
-;;
-(autoload
-  'ace-jump-mode-pop-mark
-  "ace-jump-mode"
-  "Ace jump back:-)"
-  t)
-(eval-after-load "ace-jump-mode"
-  '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-"---------------------------------------------------------------------------"
-;; column-enforce-mode
-(add-hook 'prog-mode-hook 'column-enforce-mode)
-"---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+"---------------------------------------------------------------------------"
+;;load emacs ecb
+;;(add-to-list 'load-path "~/.emacs.d/packages/ecb")
+;;(require 'ecb)
+;;(global-set-key [(f10)] 'ecb-activate)
+;;(global-set-key [(C-f10)] 'ecb-deactivate)
+"---------------------------------------------------------------------------"
+;;ac-html补全 use company instead
+;;(require 'ac-html)
+;;(add-hook 'html-mode-hook 'ac-html-enable)
+;;(add-hook 'web-mode-ac-sources-alist
+;;	  '("html" . (
+;;		      ;; attribute-value better to be first
+;;		      ac-source-html-attribute-value
+;;		      ac-source-html-tag
+;;		      ac-source-html-attribute)))
 "---------------------------------------------------------------------------"
