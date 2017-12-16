@@ -76,6 +76,18 @@
   '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 "---------------------------------------------------------------------------"
+;; ace-isearch
+(require 'ace-isearch)
+(global-ace-isearch-mode 1)
+
+(custom-set-variables
+ '(ace-isearch-input-length 7)
+ '(ace-isearch-jump-delay 0.25)
+ '(ace-isearch-function 'avy-goto-char)
+ '(ace-isearch-use-jump 'printing-char))
+
+(define-key isearch-mode-map (kbd "C-;") 'ace-isearch-jump-during-isearch) ;
+"---------------------------------------------------------------------------"
 ;;web mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))

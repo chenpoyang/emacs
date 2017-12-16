@@ -4,7 +4,7 @@
 (global-set-key (kbd "C-h C-f") 'find-function-at-point)
 (global-set-key (kbd "C-h C-v") 'find-variable-at-point)
 (global-set-key "\C-cV" 'visit-tags-table)
-(global-set-key (kbd "C-;") 'ace-window);
+(global-set-key (kbd "M-h") 'ace-window);
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 (global-set-key (kbd "s-r") 'sudo-find-file)
 (global-set-key (kbd "C-c D") 'delete-file-and-buffer)
