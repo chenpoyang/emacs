@@ -239,6 +239,7 @@
     js2-refactor-mode
     column-enforce-mode
     which-key-mode
+    ace-isearch-mode
     company-mode))
 
 (defun purge-minor-modes ()
