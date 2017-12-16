@@ -374,6 +374,12 @@
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
   "conflict with helm-swool"
   (define-key ggtags-mode-map (kbd "C-c M-i") nil))
+
+;; use helm-gtags key binding instread of xref
+(define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+(define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+(define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+(define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 "---------------------------------------------------------------------------"
 ;; helm-swoop
 (require 'helm-swoop)
