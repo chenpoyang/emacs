@@ -126,7 +126,7 @@
 (set-mouse-color "white")
 "---------------------------------------------------------------------------"
 ;;change directory
-(cd "/Users/peck")
+(cd "~/")
 "---------------------------------------------------------------------------"
 ;; delete file and buffer
 (defun delete-file-and-buffer()
