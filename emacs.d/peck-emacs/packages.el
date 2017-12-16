@@ -1,4 +1,5 @@
 "---------------------------------------------------------------------------"
+(use-package ag)
 (use-package org)
 (use-package org-bullets)
 (use-package org-pomodoro)

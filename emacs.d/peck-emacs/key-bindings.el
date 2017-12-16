@@ -1,6 +1,7 @@
 (global-set-key (kbd "s-D") 'dired)
 (global-set-key "\C-xd" 'insert-current-date)
 (global-set-key (kbd "<f2>") 'open-my-init-file)
+(global-set-key (kbd "<f9>") 'global-flycheck-mode)
 (global-set-key (kbd "C-h C-f") 'find-function-at-point)
 (global-set-key (kbd "C-h C-v") 'find-variable-at-point)
 (global-set-key "\C-cV" 'visit-tags-table)

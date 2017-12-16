@@ -27,6 +27,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ace-isearch-function (quote avy-goto-char))
+ '(ace-isearch-input-length 7)
+ '(ace-isearch-jump-delay 0.25)
+ '(ace-isearch-use-jump (quote printing-char))
  '(column-number-mode t)
  '(display-time-mode t)
  '(ecb-layout-name "peck")
@@ -47,7 +51,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment powerline-evil org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags flycheck-swift flycheck-irony erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-irony-c-headers company-irony company-go column-enforce-mode benchmark-init ace-window ace-jump-mode ac-php ac-html)))
+    (ag ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment powerline-evil org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags flycheck-swift flycheck-irony erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-irony-c-headers company-irony company-go column-enforce-mode benchmark-init ace-window ace-jump-mode ac-php ac-html)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
