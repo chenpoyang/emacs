@@ -698,7 +698,7 @@
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
   (add-hook hook (lambda () (flyspell-mode -1))))
 
-(define-key flyspell-mode-map (kbd "C-;") 'helm-flyspell-correct)
+(define-key flyspell-mode-map (kbd "<f8>") 'helm-flyspell-correct)
 
 ;; I highly suggest setting ‘flyspell-issue-message-flag’ to nil,
 ;; as printing messages for every word (when checking the entire buffer)
@@ -928,7 +928,7 @@
 (require 'erlang-start)
 "---------------------------------------------------------------------------"
 ;; ace-windows
-(global-set-key (kbd "M-p") 'ace-window);
+(global-set-key (kbd "C-;") 'ace-window);
 (setq aw-background nil)
 "---------------------------------------------------------------------------"
 ;; ace-jump-mode
