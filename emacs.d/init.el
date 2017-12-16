@@ -77,7 +77,7 @@
   (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
     (find-file tramp-file-name)))
 
-(global-set-key (kbd "C-x C-r") 'sudo-find-file)
+(global-set-key (kbd "s-r") 'sudo-find-file)
 "---------------------------------------------------------------------------"
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 "---------------------------------------------------------------------------"
