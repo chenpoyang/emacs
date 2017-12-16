@@ -45,10 +45,6 @@
 ;; To disable collection of benchmark data after init is done.
 (add-hook 'after-init-hook 'benchmark-init/deactivate)
 "---------------------------------------------------------------------------"
-;; switch to next or previous buffer
-(global-set-key (kbd "s-<") 'switch-to-prev-buffer)
-(global-set-key (kbd "s->") 'switch-to-next-buffer)
-"---------------------------------------------------------------------------"
 (require 'doom-themes)
 
 ;; Global settings (defaults)
