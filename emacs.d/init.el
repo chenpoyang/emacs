@@ -35,7 +35,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (powerline-evil powerline column-enforce-mode ace-jump-mode switch-window benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
+    (ace-window powerline-evil powerline column-enforce-mode ace-jump-mode benchmark-init json-mode doom-themes helm-flyspell erlang helm-ag gorepl-mode gore-mode nodejs-repl go-autocomplete company-go company-lua helm-gtags company-php helm-projectile projectile evil magit org-bullets lua-mode shackle ggtags helm-swoop youdao-dictionary org-pomodoro helm jsx-mode ac-php php-mode ctags flycheck-swift swift-mode elpy emmet-mode composer org ac-html epc ctable js2-refactor python-environment concurrent sourcemap memoize mew skewer-mode xref-js2 indium web-mode flycheck-irony company-irony-c-headers company-irony company-tern 0blayout)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -701,6 +701,45 @@
 ;;(add-hook 'c++-mode-hook
 ;;          (lambda ()
 ;;            (flyspell-prog-mode)))
+
+;; add words to flyspell
+(eval-when-compile (require 'cl))
+
+(defun append-aspell-word (new-word)
+  (let ((header "personal_ws-1.1")
+	(file-name (substitute-in-file-name "$HOME/.aspell.en.pws"))
+	(read-words (lambda (file-name)
+		      (let ((all-lines (with-temp-buffer
+					 (insert-file-contents file-name)
+					 (split-string (buffer-string) "\n" t))))
+			(if (null all-lines)
+			    ""
+			  (split-string (mapconcat 'identity (cdr all-lines) "\n")
+					nil
+					t))))))
+    (when (file-readable-p file-name)
+      (let* ((cur-words (eval (list read-words file-name)))
+	     (all-words (delq header (cons new-word cur-words)))
+	     (words (delq nil (remove-duplicates all-words :test 'string=))))
+	(with-temp-file file-name
+	  (insert (concat header
+			  " en "
+			  (number-to-string (length words))
+			  "\n"
+			  (mapconcat 'identity (sort words #'string<) "\n"))))))
+    (unless (file-readable-p file-name)
+      (with-temp-file file-name
+	(insert (concat header " en 1\n" new-word "\n")))))
+  (ispell-kill-ispell t) ; restart ispell
+  (flyspell-mode)
+  (flyspell-mode))
+
+(defun append-aspell-current ()
+  "Add current word to aspell dictionary"
+  (interactive)
+  (append-aspell-word (thing-at-point 'word)))
+
+(define-key flyspell-mode-map (kbd "C-c C-a") 'append-aspell-current)
 "---------------------------------------------------------------------------"
 ;; personal config
 (defun open-my-init-file()
@@ -879,12 +918,9 @@
 ;; emacs erlang
 (require 'erlang-start)
 "---------------------------------------------------------------------------"
-(require 'switch-window)
-(global-set-key (kbd "C-x o") 'switch-window)
-(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
-(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
-(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
-(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
+;; ace-windows
+(global-set-key (kbd "M-p") 'ace-window);
+(setq aw-background nil)
 "---------------------------------------------------------------------------"
 ;; ace-jump-mode
 (autoload
@@ -894,9 +930,6 @@
   t)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-
-
 ;; 
 ;; enable a more powerful jump back function from ace jump mode
 ;;
