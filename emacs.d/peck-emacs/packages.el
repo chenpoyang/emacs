@@ -9,6 +9,7 @@
 (use-package powerline-evil)
 (use-package column-enforce-mode)
 (use-package ace-jump-mode)
+(use-package ace-isearch)
 (use-package benchmark-init)
 (use-package yasnippet)
 (use-package json-mode)
