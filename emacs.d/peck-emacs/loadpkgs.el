@@ -49,7 +49,7 @@
 ;; personal config
 (defun open-my-init-file()
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/.emacs.d/peck-emacs/loadpkgs.el"))
 "---------------------------------------------------------------------------"
 ;; column-enforce-mode
 (add-hook 'prog-mode-hook 'column-enforce-mode)
