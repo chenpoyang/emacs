@@ -776,7 +776,7 @@
       (when trg
         (setcar trg "")))))
 
-;;(add-hook 'after-change-major-mode-hook 'purge-minor-modes)
+(add-hook 'after-change-major-mode-hook 'purge-minor-modes)
 "---------------------------------------------------------------------------"
 ;; youdao-dictionary
 (setq url-automatic-caching t)
