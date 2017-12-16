@@ -1,114 +1,67 @@
 "---------------------------------------------------------------------------"
 (use-package which-key
-			 :ensure t)
+  :config ;; :config can be used to execute code after a package is loaded.
+  (which-key-mode 1))
 (use-package ace-window
-			 :ensure t)
-(use-package powerline-evil
-			 :ensure t)
-(use-package powerline
-			 :ensure t)
-(use-package column-enforce-mode
-			 :ensure t)
-(use-package ace-jump-mode
-			 :ensure t)
+  :init ;; :init keyword to execute code before a package is loaded.
+  (setq aw-background nil))
+(use-package evil)
+(use-package powerline)
+(use-package powerline-evil)
+(use-package column-enforce-mode)
+(use-package ace-jump-mode)
 (use-package benchmark-init
-			 :ensure t)
-(use-package json-mode
-			 :ensure t)
-(use-package doom-themes
-			 :ensure t)
-(use-package helm-flyspell
-			 :ensure t)
-(use-package erlang
-			 :ensure t)
-(use-package helm-ag
-			 :ensure t)
-(use-package gorepl-mode
-			 :ensure t)
-(use-package gore-mode
-			 :ensure t)
-(use-package nodejs-repl
-			 :ensure t)
-(use-package go-autocomplete
-			 :ensure t)
-(use-package company-go
-			 :ensure t)
-(use-package company-lua
-			 :ensure t)
-(use-package helm-gtags
-			 :ensure t)
-(use-package company-php
-			 :ensure t)
-(use-package helm-projectile
-			 :ensure t)
-(use-package projectile
-			 :ensure t)
-(use-package evil
-			 :ensure t)
-(use-package magit
-			 :ensure t)
-(use-package org-bullets
-			 :ensure t)
-(use-package lua-mode
-			 :ensure t)
-(use-package shackle
-			 :ensure t)
-(use-package ggtags
-			 :ensure t)
-(use-package helm-swoop
-			 :ensure t)
-(use-package youdao-dictionary
-			 :ensure t)
-(use-package org-pomodoro
-			 :ensure t)
-(use-package helm
-			 :ensure t)
-(use-package jsx-mode
-			 :ensure t)
-(use-package ac-php
-			 :ensure t)
-(use-package php-mode
-			 :ensure t)
-(use-package flycheck-swift
-			 :ensure t)
-(use-package swift-mode
-			 :ensure t)
-(use-package elpy
-			 :ensure t)
-(use-package emmet-mode
-			 :ensure t)
-(use-package composer
-			 :ensure t)
-(use-package org
-			 :ensure t)
-(use-package ac-html
-			 :ensure t)
-(use-package js2-refactor
-			 :ensure t)
-(use-package python-environment
-			 :ensure t)
-(use-package concurrent
-			 :ensure t)
-(use-package sourcemap
-			 :ensure t)
-(use-package memoize
-			 :ensure t)
-(use-package mew
-			 :ensure t)
-(use-package skewer-mode
-			 :ensure t)
-(use-package xref-js2
-			 :ensure t)
-(use-package indium
-			 :ensure t)
-(use-package web-mode
-			 :ensure t)
-(use-package flycheck-irony
-			 :ensure t)
-(use-package company-irony-c-headers
-			 :ensure t)
-(use-package company-irony
-			 :ensure t)
-(use-package company-tern
-			 :ensure t)
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+(use-package yasnippet
+  :config
+  (yas-global-mode t))
+(use-package json-mode)
+(use-package doom-themes)
+(use-package helm-flyspell)
+(use-package erlang)
+(use-package helm-ag)
+(use-package gorepl-mode)
+(use-package gore-mode)
+(use-package nodejs-repl)
+(use-package go-autocomplete)
+(use-package company-go)
+(use-package company-lua)
+(use-package helm-gtags)
+(use-package company-php)
+(use-package helm-projectile)
+(use-package projectile)
+(use-package magit)
+(use-package org-bullets)
+(use-package lua-mode)
+(use-package shackle)
+(use-package ggtags)
+(use-package helm-swoop)
+(use-package youdao-dictionary)
+(use-package org-pomodoro)
+(use-package helm)
+(use-package jsx-mode)
+(use-package ac-php)
+(use-package php-mode)
+(use-package flycheck-swift)
+(use-package swift-mode)
+(use-package elpy)
+(use-package emmet-mode)
+(use-package composer)
+(use-package org)
+(use-package ac-html)
+(use-package js2-refactor)
+(use-package python-environment)
+(use-package concurrent)
+(use-package sourcemap)
+(use-package memoize)
+(use-package mew)
+(use-package skewer-mode)
+(use-package xref-js2)
+(use-package indium)
+(use-package web-mode)
+(use-package flycheck-irony)
+(use-package company-irony-c-headers)
+(use-package company-irony)
+(use-package company-tern)
 "---------------------------------------------------------------------------"

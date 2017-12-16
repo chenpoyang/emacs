@@ -27,12 +27,12 @@
 (setq powerline-default-separator 'wave)
 "---------------------------------------------------------------------------"
 ;; which-key
-(require 'which-key)
-(which-key-mode)
+;;(require 'which-key)
+;;(which-key-mode)
 "---------------------------------------------------------------------------"
-(require 'benchmark-init)
-;; To disable collection of benchmark data after init is done.
-(add-hook 'after-init-hook 'benchmark-init/deactivate)
+;;(require 'benchmark-init)
+;;;; To disable collection of benchmark data after init is done.
+;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
 "---------------------------------------------------------------------------"
 ;;Insert-current-date
 (defun insert-current-date ()
@@ -41,7 +41,7 @@
 ;;(insert (format-time-string "%Y-%m-%d" (current-time))))
 "---------------------------------------------------------------------------"
 ;; yasnippet
-(yas-global-mode t)
+;;(yas-global-mode t)
 "---------------------------------------------------------------------------"
 ;; emacs erlang
 (require 'erlang-start)
@@ -55,7 +55,7 @@
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 "---------------------------------------------------------------------------"
 ;; ace-windows
-(setq aw-background nil)
+;;(setq aw-background nil)
 "---------------------------------------------------------------------------"
 ;; ace-jump-mode
 (autoload
@@ -219,7 +219,7 @@
 "---------------------------------------------------------------------------"
 ;;git-emacs use magit instead
 (add-to-list 'load-path "~/.emacs.d/packages/git-emacs/")
-;(require 'git-emacs)
+;;(require 'git-emacs)
 "---------------------------------------------------------------------------"
 ;; emacs javascript
 (require 'js2-mode)
@@ -359,7 +359,7 @@
 ;; M-. and M-, aleady define in global map in xref, rebind it
 (with-eval-after-load 'helm-gtags
   ;; C-c d b, C-c d r, use as global keybindings, use M-. instread of C-c d
-;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
+  ;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
   (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
   (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
   "conflict with helm-swool"
