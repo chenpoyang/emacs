@@ -378,8 +378,6 @@
 ;; use helm-gtags key binding instread of xref
 (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
 (define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
-(define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 "---------------------------------------------------------------------------"
 ;; helm-swoop
 (require 'helm-swoop)
