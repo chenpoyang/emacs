@@ -27,12 +27,12 @@
 (setq powerline-default-separator 'wave)
 "---------------------------------------------------------------------------"
 ;; which-key
-;;(require 'which-key)
-;;(which-key-mode)
+(require 'which-key)
+(which-key-mode)
 "---------------------------------------------------------------------------"
 ;;(require 'benchmark-init)
-;;;; To disable collection of benchmark data after init is done.
-;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
+;; To disable collection of benchmark data after init is done.
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
 "---------------------------------------------------------------------------"
 ;;Insert-current-date
 (defun insert-current-date ()
@@ -41,7 +41,7 @@
 ;;(insert (format-time-string "%Y-%m-%d" (current-time))))
 "---------------------------------------------------------------------------"
 ;; yasnippet
-;;(yas-global-mode t)
+(yas-global-mode t)
 "---------------------------------------------------------------------------"
 ;; emacs erlang
 (require 'erlang-start)
@@ -55,7 +55,7 @@
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 "---------------------------------------------------------------------------"
 ;; ace-windows
-;;(setq aw-background nil)
+(setq aw-background nil)
 "---------------------------------------------------------------------------"
 ;; ace-jump-mode
 (autoload
@@ -315,9 +315,8 @@
           (smtp-ssl-port         "465"))))
 "---------------------------------------------------------------------------"
 ;; jsx-mode
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(autoload 'jsx-mode "jsx-mode" "JSX mode" t)
-(add-hook 'jsx-mode-hook (lambda()
+(autoload 'rjsx-mode "rjsx-mode" "rjsx mode" t)
+(add-hook 'rjsx-mode-hook (lambda()
 			   (company-mode)
 			   (tern-mode)))
 "---------------------------------------------------------------------------"

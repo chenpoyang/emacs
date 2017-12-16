@@ -40,7 +40,7 @@
 (use-package youdao-dictionary)
 (use-package org-pomodoro)
 (use-package helm)
-(use-package jsx-mode)
+(use-package rjsx-mode)
 (use-package ac-php)
 (use-package php-mode)
 (use-package flycheck-swift)
