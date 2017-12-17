@@ -115,6 +115,7 @@
 (add-hook 'web-mode-hook
 	  (lambda()
 	    (emmet-mode)
+            (define-key emmet-mode-keymap (kbd "M-j") 'emmet-expand-line)
 	    (local-set-key (kbd "C-c m t") 'tern-mode)
 	    (local-set-key (kbd "C-c m p") 'php-mode)
 	    (local-set-key (kbd "C-c m e") 'emmet-mode)))
