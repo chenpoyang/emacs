@@ -22,3 +22,5 @@ tutorial/**
 eshell/**
 images/**
 *.rej
+*.swp
+flyspell*.el
