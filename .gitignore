@@ -20,4 +20,5 @@ recentf
 snippets/**
 tutorial/**
 eshell/**
+images/**
 *.rej
