@@ -58,6 +58,7 @@
 (use-package memoize)
 (use-package mew)
 (use-package skewer-mode)
+(use-package js2-mode)
 (use-package xref-js2)
 (use-package indium)
 (use-package web-mode)
