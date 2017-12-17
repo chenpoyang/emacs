@@ -599,8 +599,10 @@
 "---------------------------------------------------------------------------"
 (require 'ag)
 "---------------------------------------------------------------------------"
-;; .h use c-mode or cpp-mode
+;; .h use c-mode or cpp-mode or objc-mode
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . objc-mode))
 "---------------------------------------------------------------------------"
 ;;load emacs ecb
 ;;(add-to-list 'load-path "~/.emacs.d/packages/ecb")
