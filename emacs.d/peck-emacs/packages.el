@@ -7,7 +7,7 @@
 (use-package ace-window)
 (use-package evil)
 (use-package powerline)
-(use-package powerline-evil)
+(use-package airline-themes)
 (use-package column-enforce-mode)
 (use-package ace-jump-mode)
 (use-package ace-isearch)

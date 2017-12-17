@@ -19,11 +19,12 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 (doom-themes-org-config)
+
 ;; powerline
 (require 'powerline)
-(require 'powerline-evil)
-(powerline-center-evil-theme)
-(setq powerline-default-separator 'wave)
+
+(require 'airline-themes)
+(load-theme 'peck-air-line-understated)
 "---------------------------------------------------------------------------"
 ;; which-key
 (require 'which-key)
