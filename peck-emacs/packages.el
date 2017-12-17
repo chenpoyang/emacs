@@ -1,4 +1,5 @@
 "---------------------------------------------------------------------------"
+(use-package chinese-wbim)
 (use-package ag)
 (use-package org)
 (use-package org-bullets)

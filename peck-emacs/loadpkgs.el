@@ -599,6 +599,19 @@
 "---------------------------------------------------------------------------"
 (require 'ag)
 "---------------------------------------------------------------------------"
+;; chinese-wbim
+(defun my-chinese-wbim-wb-activate-function ()
+  (add-hook 'chinese-wbim-active-hook 
+            (lambda ()
+              (let ((map (chinese-wbim-mode-map)))
+                (define-key map "," 'chinese-wbim-previous-page)
+                (define-key map "." 'chinese-wbim-next-page)))))
+
+(register-input-method
+ "chinese-wbim-wb" "euc-cn" 'chinese-wbim-use-package
+ "五笔" "汉字五笔输入法" "wb.txt"
+ 'my-chinese-wbim-wb-activate-function)
+"---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode or objc-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
