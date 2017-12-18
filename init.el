@@ -27,14 +27,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ace-isearch-function (quote avy-goto-char))
- '(ace-isearch-input-length 7)
- '(ace-isearch-jump-delay 0.25)
- '(ace-isearch-use-jump (quote printing-char))
+ '(ace-isearch-function (quote avy-goto-char) t)
+ '(ace-isearch-input-length 7 t)
+ '(ace-isearch-jump-delay 0.25 t)
+ '(ace-isearch-use-jump (quote printing-char) t)
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("fc92933088e987e1fa816549aa4a3737e125da7fbb0144b21c4838d7df4f406d" default)))
+    ("f8f2d182eabf478f99eb1c84f9a5a12c256aa65de1118b859805ec683873e075" "93aae813276e5add75d9e8e135dd8476cf66257503b3b7d3aaf41f41ccb5fcef" "a950150eef26d7729c31dcc37fc5e91434017dfda8fa1b511f500f58f0852af4" "fc92933088e987e1fa816549aa4a3737e125da7fbb0144b21c4838d7df4f406d" default)))
  '(display-time-mode t)
  '(ecb-layout-name "peck")
  '(ecb-options-version "2.50")
@@ -72,7 +72,6 @@
   (current-time))
 
 ;; load configuration files
-(load-file "~/.emacs.d/peck-emacs/packages.el")
 (load-file "~/.emacs.d/peck-emacs/loadpkgs.el")
 (load-file "~/.emacs.d/peck-emacs/config.el")
 (load-file "~/.emacs.d/peck-emacs/key-bindings.el")

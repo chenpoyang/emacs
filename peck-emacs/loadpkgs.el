@@ -1,4 +1,5 @@
 "---------------------------------------------------------------------------"
+;; theme
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t)
@@ -7,10 +8,11 @@
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
   (doom-themes-org-config))
-"---------------------------------------------------------------------------"
+
 (use-package powerline)
 (use-package airline-themes
-  :config(load-theme 'peck-air-line-understated))
+  :config
+  (load-theme 'peck-air-line-understated))
 "---------------------------------------------------------------------------"
 (use-package which-key
   :config

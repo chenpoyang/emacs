@@ -33,11 +33,11 @@
 
   (when airline-cursor-colors
     (progn
-      (setq evil-emacs-state-cursor   emacs-outer-background)
-      (setq evil-normal-state-cursor  normal-outer-background)
-      (setq evil-insert-state-cursor  `(bar ,insert-outer-background))
-      (setq evil-replace-state-cursor replace-outer-background)
-      (setq evil-visual-state-cursor  visual-outer-background)))
+      (setq evil-emacs-state-cursor   "#7cfc00")
+      (setq evil-normal-state-cursor  "#7cfc00")
+      (setq evil-insert-state-cursor  `(bar ,"#7cfc00"))
+      (setq evil-replace-state-cursor "#7cfc00")
+      (setq evil-visual-state-cursor  "#7cfc00")))
   )
 
 (airline-themes-set-modeline)
