@@ -107,6 +107,20 @@
   (interactive "FSudo Find File: ")
   (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
     (find-file tramp-file-name)))
+(global-set-key (kbd "s-r") 'sudo-find-file)
+"---------------------------------------------------------------------------"
+;;Insert-current-date
+(defun insert-current-date ()
+  (interactive "*")
+  (insert (format-time-string "[%Y-%m-%d %H:%M:%S]" (current-time))))
+;;(insert (format-time-string "%Y-%m-%d" (current-time))))
+(global-set-key "\C-xd" 'insert-current-date)
+"---------------------------------------------------------------------------"
+;; personal config
+(defun open-my-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/peck-emacs/loadpkgs.el"))
+(global-set-key (kbd "<f2>") 'open-my-init-file)
 "---------------------------------------------------------------------------"
 ;; delete file and buffer
 (defun delete-file-and-buffer()
@@ -120,6 +134,7 @@
 	  (delete-file filename)
 	  (message "Deleted file %s" filename)
 	  (kill-buffer))))))
+(global-set-key (kbd "C-c D") 'delete-file-and-buffer)
 "---------------------------------------------------------------------------"
 ;; eshell prompt
 (defmacro with-face (str &rest properties)
@@ -245,4 +260,9 @@
         (setcar trg "")))))
 
 (add-hook 'after-change-major-mode-hook 'purge-minor-modes)
+"---------------------------------------------------------------------------"
+;; .h use c-mode or cpp-mode or objc-mode
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;;(add-to-list 'auto-mode-alist '("\\.h\\'" . objc-mode))
 "---------------------------------------------------------------------------"
