@@ -330,8 +330,8 @@
 ;; jsx-mode
 (autoload 'rjsx-mode "rjsx-mode" "rjsx mode" t)
 (add-hook 'rjsx-mode-hook (lambda()
-			   (company-mode)
-			   (tern-mode)))
+                            (company-mode)
+                            (tern-mode)))
 "---------------------------------------------------------------------------"
 "c/c++ opening corresponding header file"
 (add-hook 'c-mode-common-hook
