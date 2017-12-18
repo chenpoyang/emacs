@@ -529,6 +529,7 @@
 (evil-mode t)
 ;; always start with state <E>
 (setq evil-default-state 'emacs)
+(evil-set-initial-state 'term-mode 'emacs)
 "---------------------------------------------------------------------------"
 (require 'projectile)
 (projectile-global-mode)
