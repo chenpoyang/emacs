@@ -2,6 +2,9 @@
 ;;change directory
 (cd "~/")
 "---------------------------------------------------------------------------"
+;; global-auto-revert-mode
+(global-auto-revert-mode 1)
+"---------------------------------------------------------------------------"
 ;; close the ring bell and warning icon
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
