@@ -5,7 +5,9 @@
 (global-set-key (kbd "C-h C-f") 'find-function-at-point)
 (global-set-key (kbd "C-h C-v") 'find-variable-at-point)
 (global-set-key "\C-cV" 'visit-tags-table)
-(global-set-key (kbd "M-h") 'ace-window);
+(global-set-key (kbd "M-h") 'ace-window)
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "M-h") nil))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 (global-set-key (kbd "s-r") 'sudo-find-file)
 (global-set-key (kbd "C-c D") 'delete-file-and-buffer)
@@ -26,5 +28,4 @@
 (global-set-key (kbd "C-c y i") 'youdao-dictionary-search-from-input)
 (global-set-key (kbd "C-c y v") 'youdao-dictionary-play-voice-at-point)
 (global-set-key (kbd "C-x g") 'magit-status)
-;; headline in file(show function lists(variables)?)
 (global-set-key "\C-xp" 'helm-semantic-or-imenu)
