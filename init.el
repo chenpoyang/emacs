@@ -34,7 +34,7 @@
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("f8f2d182eabf478f99eb1c84f9a5a12c256aa65de1118b859805ec683873e075" "93aae813276e5add75d9e8e135dd8476cf66257503b3b7d3aaf41f41ccb5fcef" "a950150eef26d7729c31dcc37fc5e91434017dfda8fa1b511f500f58f0852af4" "fc92933088e987e1fa816549aa4a3737e125da7fbb0144b21c4838d7df4f406d" default)))
+    ("f8f2d182eabf478f99eb1c84f9a5a12c256aa65de1118b859805ec683873e075" default)))
  '(display-time-mode t)
  '(ecb-layout-name "peck")
  '(ecb-options-version "2.50")
