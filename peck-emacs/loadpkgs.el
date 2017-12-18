@@ -30,7 +30,7 @@
 (require 'which-key)
 (which-key-mode)
 "---------------------------------------------------------------------------"
-;;(require 'benchmark-init)
+(require 'benchmark-init)
 ;; To disable collection of benchmark data after init is done.
 (add-hook 'after-init-hook 'benchmark-init/deactivate)
 "---------------------------------------------------------------------------"
@@ -148,6 +148,7 @@
 ;;(add-hook 'after-init-hook 'global-company-mode)
 ;;(setq company-global-modes '(not php-mode))
 ;;(setq company-global-modes '(not html-mode))
+
 (global-company-mode 1)
 
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
