@@ -1,4 +1,6 @@
 "---------------------------------------------------------------------------"
+(use-package ecb)
+(use-package neotree)
 (use-package chinese-wbim)
 (use-package ag)
 (use-package org)

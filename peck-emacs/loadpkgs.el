@@ -613,16 +613,18 @@
  "五笔" "汉字五笔输入法" "wb.txt"
  'my-chinese-wbim-wb-activate-function)
 "---------------------------------------------------------------------------"
+(require 'neotree)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+"---------------------------------------------------------------------------"
+;;emacs ecb
+(require 'ecb)
+(global-set-key [(f10)] 'ecb-activate)
+(global-set-key [(C-f10)] 'ecb-deactivate)
+"---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode or objc-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . objc-mode))
-"---------------------------------------------------------------------------"
-;;load emacs ecb
-;;(add-to-list 'load-path "~/.emacs.d/packages/ecb")
-;;(require 'ecb)
-;;(global-set-key [(f10)] 'ecb-activate)
-;;(global-set-key [(C-f10)] 'ecb-deactivate)
 "---------------------------------------------------------------------------"
 ;;ac-html补全 use company instead
 ;;(require 'ac-html)

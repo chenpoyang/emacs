@@ -29,3 +29,4 @@
 (global-set-key (kbd "C-c y v") 'youdao-dictionary-play-voice-at-point)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key "\C-xp" 'helm-semantic-or-imenu)
+(global-set-key [f8] 'neotree-toggle)
