@@ -261,6 +261,35 @@
 
 (add-hook 'after-change-major-mode-hook 'purge-minor-modes)
 "---------------------------------------------------------------------------"
+"c/c++/objc opening corresponding header file"
+(add-hook 'c-mode-common-hook
+	  (lambda()
+	    (local-set-key "\C-xz" 'ff-find-other-file)))
+"---------------------------------------------------------------------------"
+;; .h .mm files add to objc-mode
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+
+;; header .h add to objc-mode
+(add-to-list 'magic-mode-alist
+	     `(,(lambda ()
+		  (and (string= (file-name-extension buffer-file-name) "h")
+		       (re-search-forward "@\\<interface\\>"
+					  magic-mode-regexp-match-limit t)))
+	       . objc-mode))
+
+;; etags for objc
+(defun create-objc-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.[hm]\" | etags -" dir-name)))
+
+;; key bindings, objc opening corresponding header file
+(add-hook 'objc-mode-hook
+          (lambda()
+	    (local-set-key "\C-cE" 'create-objc-tags)
+            (local-set-key "\C-xz" 'ff-find-other-file)))
+"---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode or objc-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))

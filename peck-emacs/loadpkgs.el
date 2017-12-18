@@ -309,11 +309,6 @@
                               (company-mode)
                               (tern-mode))))
 "---------------------------------------------------------------------------"
-"c/c++/objc opening corresponding header file"
-(add-hook 'c-mode-common-hook
-	  (lambda()
-	    (local-set-key "\C-xz" 'ff-find-other-file)))
-"---------------------------------------------------------------------------"
 ;; python
 (use-package python-environment
   :config
@@ -581,36 +576,13 @@
               (define-key js2-mode-map (kbd "C-c C-f") 'nodejs-repl-load-file)
               (define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl))))
 "---------------------------------------------------------------------------"
-;; .h .mm files add to objc-mode
-(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
-
-;; header .h add to objc-mode
-(add-to-list 'magic-mode-alist
-	     `(,(lambda ()
-		  (and (string= (file-name-extension buffer-file-name) "h")
-		       (re-search-forward "@\\<interface\\>"
-					  magic-mode-regexp-match-limit t)))
-	       . objc-mode))
-
-;; etags for objc
-(defun create-objc-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (eshell-command
-   (format "find %s -type f -name \"*.[hm]\" | etags -" dir-name)))
-
-;; key bindings, objc opening corresponding header file
-(add-hook 'objc-mode-hook
-          (lambda()
-	    (local-set-key "\C-cE" 'create-objc-tags)
-            (local-set-key "\C-xz" 'ff-find-other-file)))
-"---------------------------------------------------------------------------"
 (use-package ag
   :init
   (use-package helm-ag))
 "---------------------------------------------------------------------------"
 ;; chinese-wbim
 (use-package chinese-wbim
+  :defer t
   :config
   (defun my-chinese-wbim-wb-activate-function ()
     (add-hook 'chinese-wbim-active-hook 
@@ -625,10 +597,12 @@
    'my-chinese-wbim-wb-activate-function))
 "---------------------------------------------------------------------------"
 (use-package neotree
+  :defer t
   :bind([f7] . neotree-toggle)
   :config(setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 "---------------------------------------------------------------------------"
 (use-package ecb
+  :defer t
   :config(setq ecb-windows-width 0.15)
   :bind(([f10] . ecb-activate)
         ([C-f10] . ecb-deactivate)))
