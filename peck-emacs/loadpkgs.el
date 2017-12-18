@@ -54,6 +54,10 @@
   :bind(:map isearch-mode-map
              ("C-;" . ace-isearch-jump-during-isearch)))
 "---------------------------------------------------------------------------"
+(use-package emmet-mode
+  :bind(:map emmet-mode-keymap
+             ("M-j" . emmet-expand-line)))
+"---------------------------------------------------------------------------"
 (use-package web-mode
   :commands web-mode
   :init
@@ -82,7 +86,6 @@
   (add-hook 'web-mode-hook
             (lambda()
               (emmet-mode)
-              (define-key emmet-mode-keymap (kbd "M-j") 'emmet-expand-line)
               (local-set-key (kbd "C-c m w") 'web-mode)
               (local-set-key (kbd "C-c m t") 'tern-mode)
               (local-set-key (kbd "C-c m p") 'php-mode)
