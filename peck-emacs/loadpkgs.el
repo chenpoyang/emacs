@@ -91,27 +91,6 @@
               (local-set-key (kbd "C-c m p") 'php-mode)
               (local-set-key (kbd "C-c m e") 'emmet-mode))))
 "---------------------------------------------------------------------------"
-(use-package irony
-  :config
-  (defun my-irony-mode-on ()
-    ;; avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
-    (when (member major-mode irony-supported-major-modes)
-      (irony-mode 1)))
-
-  (add-hook 'c++-mode-hook 'my-irony-mode-on)
-  (add-hook 'c-mode-hook 'my-irony-mode-on)
-  (add-hook 'objc-mode-hook 'my-irony-mode-on)
-
-  (defun my-irony-mode-hook ()
-    (define-key irony-mode-map [remap completion-at-point]
-      'irony-completion-at-point-async)
-    (define-key irony-mode-map [remap complete-symbol]
-      'irony-completion-at-point-async))
-
-  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
-"---------------------------------------------------------------------------"
 (use-package company
   :config
   ;;(add-hook 'after-init-hook 'global-company-mode)
@@ -176,6 +155,55 @@
   (add-hook 'php-mode-hook 'my-php-indent-setup)
   (add-hook 'php-mode-hook 'wicked/php-mode-init))
 "---------------------------------------------------------------------------"
+;; irony-mode
+(use-package irony
+  :config
+  (defun my-irony-mode-on ()
+    ;; avoid enabling irony-mode in modes that inherits c-mode, e.g: php-mode
+    (when (member major-mode irony-supported-major-modes)
+      (irony-mode 1)))
+
+  (add-hook 'c++-mode-hook 'my-irony-mode-on)
+  (add-hook 'c-mode-hook 'my-irony-mode-on)
+  (add-hook 'objc-mode-hook 'my-irony-mode-on)
+
+  (defun my-irony-mode-hook ()
+    (define-key irony-mode-map [remap completion-at-point]
+      'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+      'irony-completion-at-point-async))
+
+  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+"---------------------------------------------------------------------------"
+;; flycheck
+(use-package flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+(use-package flycheck-irony)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+(eval-after-load 'flycheck
+  '(add-to-list 'flycheck-checkers 'irony))
+(global-set-key (kbd "<f9>") 'global-flycheck-mode)
+
+;; flycheck(TODO: not working flycheck using irony checker in c/c++/objc
+;; (use-package flycheck
+;;   :config
+;;   (add-hook 'after-init-hook #'global-flycheck-mode)
+;;   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+;; ;; flycheck-irony
+;; (use-package flycheck-irony
+;;   :bind
+;;   ([f9] . global-flycheck-mode)
+;;   :config
+;;   (eval-after-load 'flycheck
+;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;;   (eval-after-load 'flycheck
+;;     '(add-to-list 'flycheck-checkers 'irony)))
+"---------------------------------------------------------------------------"
 ;; company-tern and company-mode for javascript auto-completion
 (use-package company-tern
   :config
@@ -239,20 +267,6 @@
             (setq js2-basic-offset my-js-mode-indent-num)
             (setq js-switch-indent-offset my-js-mode-indent-num)
             ))
-"---------------------------------------------------------------------------"
-;; flycheck
-(use-package flycheck
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-"---------------------------------------------------------------------------"
-;; flycheck-irony
-(use-package flycheck-irony
-  :bind
-  ([f9] . global-flycheck-mode)
-  :config
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 "---------------------------------------------------------------------------"
 ;; emacs mew mail client
 (use-package mew
