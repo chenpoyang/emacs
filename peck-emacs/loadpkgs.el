@@ -178,31 +178,18 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 "---------------------------------------------------------------------------"
 ;; flycheck
-(use-package flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+(use-package flycheck
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
-(use-package flycheck-irony)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-(eval-after-load 'flycheck
-  '(add-to-list 'flycheck-checkers 'irony))
-(global-set-key (kbd "<f9>") 'global-flycheck-mode)
-
-;; flycheck(TODO: not working flycheck using irony checker in c/c++/objc
-;; (use-package flycheck
-;;   :config
-;;   (add-hook 'after-init-hook #'global-flycheck-mode)
-;;   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-;; ;; flycheck-irony
-;; (use-package flycheck-irony
-;;   :bind
-;;   ([f9] . global-flycheck-mode)
-;;   :config
-;;   (eval-after-load 'flycheck
-;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-;;   (eval-after-load 'flycheck
-;;     '(add-to-list 'flycheck-checkers 'irony)))
+(use-package flycheck-irony
+  :after (flycheck)
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+  (add-to-list 'flycheck-checkers 'irony)
+  ;; using :bind make flycheck-irony not working
+  (global-set-key (kbd "<f9>") 'global-flycheck-mode))
 "---------------------------------------------------------------------------"
 ;; company-tern and company-mode for javascript auto-completion
 (use-package company-tern
