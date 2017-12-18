@@ -99,14 +99,6 @@
 	  ;; that causes the test to fail on X11 by about 1.5 -- so use 17 instead.
 	  (> frame-height (+ image-height 17)))))))
 "---------------------------------------------------------------------------"
-;;minibuffer奇怪
-(defun switch-to-minibuffer-window ()
-  "switch to minibuffer window (if active)"
-  (interactive)
-  (when (active-minibuffer-window)
-    (select-frame-set-input-focus (window-frame (active-minibuffer-window)))
-    (select-window (active-minibuffer-window))))
-"---------------------------------------------------------------------------"
 (defun sudo-find-file (file-name)
   "Like find file, but opens the file as root."
   (interactive "FSudo Find File: ")
