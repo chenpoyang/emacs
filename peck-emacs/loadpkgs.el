@@ -1,4 +1,13 @@
 "---------------------------------------------------------------------------"
+(use-package all-the-icons)
+"---------------------------------------------------------------------------"
+(use-package neotree
+  :defer t
+  :bind
+  ([f7] . neotree-toggle)
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+"---------------------------------------------------------------------------"
 ;; theme
 (use-package doom-themes
   :config
@@ -599,11 +608,6 @@
    "chinese-wbim-wb" "euc-cn" 'chinese-wbim-use-package
    "五笔" "汉字五笔输入法" "wb.txt"
    'my-chinese-wbim-wb-activate-function))
-"---------------------------------------------------------------------------"
-(use-package neotree
-  :defer t
-  :bind([f7] . neotree-toggle)
-  :config(setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 "---------------------------------------------------------------------------"
 (use-package ecb
   :defer t
