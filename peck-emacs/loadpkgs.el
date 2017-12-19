@@ -525,8 +525,9 @@
   (setq aw-background nil)
   :bind
   ("M-h" . ace-window)
-  :bind(:map org-mode-map
-             ("M-h" . nil)))
+  :config
+  (with-eval-after-load 'org
+    (define-key org-mode-map (kbd "M-h") nil)))
 "---------------------------------------------------------------------------"
 (use-package youdao-dictionary
   :init(setq url-automatic-caching t)
