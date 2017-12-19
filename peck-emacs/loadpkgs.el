@@ -42,6 +42,7 @@
   (yas-global-mode t))
 "---------------------------------------------------------------------------"
 (use-package erlang
+  :defer t
   :config
   (require 'erlang-start))
 "---------------------------------------------------------------------------"
@@ -235,40 +236,44 @@
                 (ggtags-mode 1)))))
 "---------------------------------------------------------------------------"
 ;; emacs javascript
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(use-package js2-mode
+  :defer t
+  ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+  ;; unbind it.
+  :bind(:map js-mode-map
+             ("M-." . nil))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;; Better imenu
+  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+  
+  (use-package js2-refactor
+    :config
+    (add-hook 'js2-mode-hook #'js2-refactor-mode)
+    (js2r-add-keybindings-with-prefix "C-c C-r")
+    :bind(:map js2-mode-map
+               ("C-k" . #'js2r-kill)))
+  
+  (use-package xref-js2)
 
-;; Better imenu
-(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+  (add-hook 'js2-mode-hook (lambda ()
+                             (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
-(require 'js2-refactor)
-(require 'xref-js2)
+  ;; js2-mode indent
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (c-set-offset 'case-label '+)
+              (setq js-indent-level 4)
+              (set (make-local-variable 'js2-indent-switch-body) t)
+              ))
 
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
-
-;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
-;; unbind it.
-(define-key js-mode-map (kbd "M-.") nil)
-
-(add-hook 'js2-mode-hook (lambda ()
-			   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
-
-;; js2-mode indent
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (c-set-offset 'case-label '+)
-            (setq js-indent-level 4)
-            (set (make-local-variable 'js2-indent-switch-body) t)
-            ))
-
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (setq my-js-mode-indent-num 4)
-            (setq js2-basic-offset my-js-mode-indent-num)
-            (setq js-switch-indent-offset my-js-mode-indent-num)
-            ))
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (setq my-js-mode-indent-num 4)
+              (setq js2-basic-offset my-js-mode-indent-num)
+              (setq js-switch-indent-offset my-js-mode-indent-num)
+              ))
+  )
 "---------------------------------------------------------------------------"
 ;; emacs mew mail client
 (use-package mew
@@ -473,6 +478,7 @@
   (define-key flyspell-mode-map (kbd "C-c C-a") 'append-aspell-current))
 "---------------------------------------------------------------------------"
 (use-package org
+  :defer t
   :config
   (setq org-log-done t)
 
