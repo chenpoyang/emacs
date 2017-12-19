@@ -1,17 +1,4 @@
 "---------------------------------------------------------------------------"
-(use-package all-the-icons)
-(use-package all-the-icons-dired
-  :after(all-the-icons)
-  :config
-  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-"---------------------------------------------------------------------------"
-(use-package neotree
-  :defer t
-  :bind
-  ([f7] . neotree-toggle)
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-"---------------------------------------------------------------------------"
 ;; theme
 (use-package doom-themes
   :after(all-the-icons)
@@ -42,7 +29,6 @@
   (yas-global-mode t))
 "---------------------------------------------------------------------------"
 (use-package erlang
-  :defer t
   :config
   (require 'erlang-start))
 "---------------------------------------------------------------------------"
@@ -51,7 +37,6 @@
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 "---------------------------------------------------------------------------"
 (use-package ace-jump-mode
-  :defer t
   :init
   (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
   (bind-key "C-c SPC" 'ace-jump-mode)
@@ -128,8 +113,8 @@
     '(add-to-list 'company-backends 'company-irony)))
 "---------------------------------------------------------------------------"
 (use-package php-mode
-  :defer t
   :config
+  (use-package company-php)
   (add-hook 'php-mode-hook
             '(lambda ()
                (require 'company-php)
@@ -238,7 +223,6 @@
 "---------------------------------------------------------------------------"
 ;; emacs javascript
 (use-package js2-mode
-  :defer t
   ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
   ;; unbind it.
   :bind(:map js-mode-map
@@ -327,7 +311,6 @@
 "---------------------------------------------------------------------------"
 ;; rjsx-mode for jsx files
 (use-package rjsx-mode
-  :defer t
   :init
   (autoload 'rjsx-mode "rjsx-mode" "rjsx mode" t)
   (add-hook 'rjsx-mode-hook (lambda()
@@ -342,6 +325,10 @@
                                 (yas-minor-mode)))
   ;; while C-c C-c in python file, warning occur
   (setq python-shell-completion-native-enable nil))
+
+(use-package elpy
+  :config
+  (elpy-enable))
 "---------------------------------------------------------------------------"
 ;; emacs-helm
 (use-package helm
@@ -427,7 +414,9 @@
   (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
     (add-hook hook (lambda () (flyspell-mode -1))))
 
-  (define-key flyspell-mode-map (kbd "<f8>") 'helm-flyspell-correct)
+  (use-package helm-flyspell
+    :bind
+    ([f8] . helm-flyspell-correct))
 
   ;; I highly suggest setting ‘flyspell-issue-message-flag’ to nil,
   ;; as printing messages for every word (when checking the entire buffer)
@@ -479,12 +468,13 @@
   (define-key flyspell-mode-map (kbd "C-c C-a") 'append-aspell-current))
 "---------------------------------------------------------------------------"
 (use-package org
-  :defer t
   :config
   (setq org-log-done t)
 
   (defun custom_org_auto_check()
     (org-update-checkbox-count t))
+
+  (use-package org-pomodoro)
 
   (add-hook 'org-mode-hook
             (lambda()
@@ -518,7 +508,9 @@
                                "~/org/issue.org"))
 
   ;; org-bullets
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (use-package org-bullets
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
 "---------------------------------------------------------------------------"
 (use-package ace-window
   :init
@@ -561,7 +553,11 @@
 (use-package projectile
   :config
   (projectile-global-mode 1)
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'helm))
+"---------------------------------------------------------------------------"
+;; helm-projectile
+(use-package helm-projectile
+  :config
   (helm-projectile-on))
 "---------------------------------------------------------------------------"
 ;; lua
@@ -588,9 +584,13 @@
               (add-hook 'before-save-hook 'gofmt-before-save)
               (setq tab-width 4)
               (setq indent-tabs-mode 1)))
+  ;; gore-mode
+  (use-package gore-mode)
 
   ;; gorepl
-  (add-hook 'go-mode-hook #'gorepl-mode))
+  (use-package gorepl-mode
+    :config
+    (add-hook 'go-mode-hook #'gorepl-mode)))
 "---------------------------------------------------------------------------"
 ;; nodejs repl
 (use-package nodejs-repl
@@ -609,7 +609,6 @@
 "---------------------------------------------------------------------------"
 ;; chinese-wbim
 (use-package chinese-wbim
-  :defer t
   :config
   (defun my-chinese-wbim-wb-activate-function ()
     (add-hook 'chinese-wbim-active-hook 
@@ -624,8 +623,25 @@
    'my-chinese-wbim-wb-activate-function))
 "---------------------------------------------------------------------------"
 (use-package ecb
-  :defer t
   :config(setq ecb-windows-width 0.15)
   :bind(([f10] . ecb-activate)
         ([C-f10] . ecb-deactivate)))
+"---------------------------------------------------------------------------"
+(use-package all-the-icons)
+(use-package all-the-icons-dired
+  :after(all-the-icons)
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+"---------------------------------------------------------------------------"
+(use-package neotree
+  :bind
+  ([f7] . neotree-toggle)
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+"---------------------------------------------------------------------------"
+(use-package composer)
+"---------------------------------------------------------------------------"
+(use-package json-mode)
+"---------------------------------------------------------------------------"
+(use-package indium)
 "---------------------------------------------------------------------------"

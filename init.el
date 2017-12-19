@@ -7,7 +7,6 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/") t)
 ;;("marmalade" . "http://marmalade-repo.org/packages/")
 ;;("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
@@ -54,7 +53,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (all-the-icons-dired company-irony-c-headers flycheck-irony flycheck company-irony ace-window ecb neotree chinese-wbim ag ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-go column-enforce-mode benchmark-init ace-jump-mode ac-php)))
+    (projectile evil helm js2-mode php-mode company yasnippet airline-themes powerline all-the-icons-dired company-irony-c-headers flycheck-irony flycheck company-irony ace-window ecb neotree chinese-wbim ag ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-go column-enforce-mode benchmark-init ace-jump-mode ac-php)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
