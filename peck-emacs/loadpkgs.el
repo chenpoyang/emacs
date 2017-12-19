@@ -621,13 +621,3 @@
   :bind(([f10] . ecb-activate)
         ([C-f10] . ecb-deactivate)))
 "---------------------------------------------------------------------------"
-;;ac-html补全 use company instead
-;;(require 'ac-html)
-;;(add-hook 'html-mode-hook 'ac-html-enable)
-;;(add-hook 'web-mode-ac-sources-alist
-;;	  '("html" . (
-;;		      ;; attribute-value better to be first
-;;		      ac-source-html-attribute-value
-;;		      ac-source-html-tag
-;;		      ac-source-html-attribute)))
-"---------------------------------------------------------------------------"
