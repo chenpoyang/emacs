@@ -1,6 +1,7 @@
 "---------------------------------------------------------------------------"
 (use-package all-the-icons)
 (use-package all-the-icons-dired
+  :after(all-the-icons)
   :config
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 "---------------------------------------------------------------------------"
@@ -13,6 +14,7 @@
 "---------------------------------------------------------------------------"
 ;; theme
 (use-package doom-themes
+  :after(all-the-icons)
   :config
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
@@ -20,7 +22,8 @@
   (doom-themes-visual-bell-config)
   (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
   (doom-themes-org-config))
-
+"---------------------------------------------------------------------------"
+;; powerline
 (use-package powerline)
 (use-package airline-themes
   :config
