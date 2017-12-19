@@ -33,7 +33,7 @@
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
-    ("f8f2d182eabf478f99eb1c84f9a5a12c256aa65de1118b859805ec683873e075" default)))
+    ("9411de5aabbace500460f5544187ee4bccff90d2eaad04c308de4e5f5863eed8" default)))
  '(display-time-mode t)
  '(ecb-layout-name "peck")
  '(ecb-options-version "2.50")

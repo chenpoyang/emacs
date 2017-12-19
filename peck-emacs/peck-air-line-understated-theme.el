@@ -5,7 +5,7 @@
 (deftheme peck-air-line-understated
   "source: https://github.com/bling/vim-airline/blob/master/autoload/airline/themes/understated.vim")
 
-(let ((normal-outer-foreground  "#FFFFFF") (normal-outer-background  "#666666")
+(let ((normal-outer-foreground  "#FFFFFF") (normal-outer-background  "#1B1D1F")
       (normal-inner-foreground  "#AFAF87") (normal-inner-background  "#5F5F5F")
       (normal-center-foreground "#AFAF87") (normal-center-background "#5F5F5F")
 
@@ -13,7 +13,7 @@
       (insert-inner-foreground  "#AFAF87") (insert-inner-background  "#5F5F5F")
       (insert-center-foreground "#AFAF87") (insert-center-background "#5F5F5F")
 
-      (visual-outer-foreground  "#FFFFFF") (visual-outer-background  "#666666")
+      (visual-outer-foreground  "#FFFFFF") (visual-outer-background  "#1B1D1F")
       (visual-inner-foreground  "#AFAF87") (visual-inner-background  "#5F5F5F")
       (visual-center-foreground "#AFAF87") (visual-center-background "#5F5F5F")
 
@@ -21,7 +21,7 @@
       (replace-inner-foreground  "#AFAF87") (replace-inner-background  "#5F5F5F")
       (replace-center-foreground "#AFAF87") (replace-center-background "#5F5F5F")
 
-      (emacs-outer-foreground  "#d7d7ff") (emacs-outer-background  "#666666")
+      (emacs-outer-foreground  "#d7d7ff") (emacs-outer-background  "#1B1D1F")
       (emacs-inner-foreground  "#AFAF87") (emacs-inner-background  "#5F5F5F")
       (emacs-center-foreground "#AFAF87") (emacs-center-background "#5F5F5F")
 
