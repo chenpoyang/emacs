@@ -1,7 +1,6 @@
 "---------------------------------------------------------------------------"
 ;; theme
 (use-package doom-themes
-  :after(all-the-icons)
   :config
   (setq doom-themes-enable-bold t)
   (setq doom-themes-enable-italic t)
@@ -29,6 +28,7 @@
   (yas-global-mode t))
 "---------------------------------------------------------------------------"
 (use-package erlang
+  :defer 5
   :config
   (require 'erlang-start))
 "---------------------------------------------------------------------------"
@@ -61,6 +61,7 @@
              ("M-j" . emmet-expand-line)))
 "---------------------------------------------------------------------------"
 (use-package web-mode
+  :defer 5
   :commands web-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -181,6 +182,7 @@
 "---------------------------------------------------------------------------"
 ;; flycheck
 (use-package flycheck
+  :defer 5
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
@@ -195,6 +197,7 @@
 "---------------------------------------------------------------------------"
 ;; company-tern and company-mode for javascript auto-completion
 (use-package company-tern
+  :defer 5
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-hook 'js2-mode-hook (lambda ()
@@ -223,6 +226,7 @@
 "---------------------------------------------------------------------------"
 ;; emacs javascript
 (use-package js2-mode
+  :defer 5
   ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
   ;; unbind it.
   :bind(:map js-mode-map
@@ -468,6 +472,7 @@
   (define-key flyspell-mode-map (kbd "C-c C-a") 'append-aspell-current))
 "---------------------------------------------------------------------------"
 (use-package org
+  :defer 5
   :config
   (setq org-log-done t)
 
@@ -627,8 +632,10 @@
   :bind(([f10] . ecb-activate)
         ([C-f10] . ecb-deactivate)))
 "---------------------------------------------------------------------------"
-(use-package all-the-icons)
+(use-package all-the-icons
+  :defer 5)
 (use-package all-the-icons-dired
+  :defer 5
   :after(all-the-icons)
   :config
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
