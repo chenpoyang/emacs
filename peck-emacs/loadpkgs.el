@@ -552,16 +552,11 @@
   :init(setq evil-default-state 'emacs)
   :config
   (evil-mode 1)
-  (evil-set-initial-state 'special-mode 'emacs)
-  (evil-set-initial-state 'eshell-mode 'emacs)
-  (evil-set-initial-state 'comint-mode 'emacs)
-  (evil-set-initial-state 'git-commit-mode 'emacs)
-  (evil-set-initial-state 'diff-mode 'emacs)
-  (evil-set-initial-state 'custom-mode 'emacs)
-  (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'calendar-mode 'emacs)
-  (evil-set-initial-state 'help-mode 'emacs)
-  (evil-set-initial-state 'term-mode 'emacs))
+  (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode
+                              comint-mode erc-mode special-mode
+                              git-commit-mode diff-mode custom-mode
+                              dired-mode calendar-mode help-mode))
+    (evil-set-initial-state mode 'emacs)))
 "---------------------------------------------------------------------------"
 ;; projectile
 (use-package projectile
