@@ -21,6 +21,10 @@
 ;; maxmize
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 "---------------------------------------------------------------------------"
+;; switch to previous or next buffer
+(global-set-key (kbd "C-c b") 'previous-buffer)
+(global-set-key (kbd "C-c n") 'next-buffer)
+"---------------------------------------------------------------------------"
 ;; file encoding
 (setq buffer-file-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
