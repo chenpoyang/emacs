@@ -3,6 +3,7 @@
 (cd "~/")
 "---------------------------------------------------------------------------"
 (ido-mode 1)
+(hs-minor-mode 1)
 "---------------------------------------------------------------------------"
 ;; global-auto-revert-mode
 (global-auto-revert-mode 1)
@@ -256,6 +257,7 @@
     column-enforce-mode
     which-key-mode
     ace-isearch-mode
+    hs-minor-mode
     company-mode))
 
 (defun purge-minor-modes ()
