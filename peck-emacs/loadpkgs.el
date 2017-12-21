@@ -521,10 +521,10 @@
   :init
   (setq aw-background nil)
   :bind
-  ("M-h" . ace-window)
+  ("C-;" . ace-window)
   :config
-  (with-eval-after-load 'org
-    (define-key org-mode-map (kbd "M-h") nil)))
+  (with-eval-after-load 'flyspell
+    (define-key flyspell-mode-map (kbd "C-;") nil)))
 "---------------------------------------------------------------------------"
 (use-package youdao-dictionary
   :init(setq url-automatic-caching t)
