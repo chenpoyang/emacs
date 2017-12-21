@@ -4,6 +4,7 @@
 "---------------------------------------------------------------------------"
 (ido-mode 1)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
+(setq recentf-max-saved-items 10)
 "---------------------------------------------------------------------------"
 ;; global-auto-revert-mode
 (global-auto-revert-mode 1)
