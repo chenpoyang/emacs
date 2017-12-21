@@ -37,7 +37,10 @@
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 "---------------------------------------------------------------------------"
 (use-package ace-jump-mode
-  :init
+  :after(org)
+  :bind(:map org-mode-map
+             ("C-c SPC" . nil))
+  :config
   (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
   (bind-key "C-c SPC" 'ace-jump-mode)
   (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back:-)" t)
