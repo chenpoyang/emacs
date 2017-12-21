@@ -46,7 +46,7 @@
 (setq show-paren-style 'parentheses)
 ;; 显示时间，格式如下
 (display-time-mode 1)
-(setq display-time-24hr-format t) 
+(setq display-time-24hr-format t)
 (setq display-time-day-and-date t) 
 (transient-mark-mode t)
 ;; 支持emacs和外部程序的粘贴
