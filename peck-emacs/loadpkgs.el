@@ -75,7 +75,7 @@
   :config
   (defun bs-web-mode-hook ()
     (local-set-key '[backtab] 'indent-relative)
-    (setq indent-tabs-mode t)
+    (setq indent-tabs-mode nil)
     (setq web-mode-markup-indent-offset 2
           web-mode-css-indent-offset 2
           web-mode-code-indent-offset 4))
@@ -151,7 +151,7 @@
   ;; public function indent;
   (add-hook 'php-mode-hook '(lambda ()
                               (setq tab-width 4
-                                    indent-tabs-mode t)
+                                    indent-tabs-mode nil)
                               (c-set-style "symfony2")
                               ))
 
@@ -592,7 +592,7 @@
             (lambda ()
               (add-hook 'before-save-hook 'gofmt-before-save)
               (setq tab-width 4)
-              (setq indent-tabs-mode 1)))
+              (setq indent-tabs-mode nil)))
   ;; gore-mode
   (use-package gore-mode)
 
