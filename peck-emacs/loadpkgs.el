@@ -555,7 +555,7 @@
   (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode
                               comint-mode erc-mode special-mode
                               git-commit-mode diff-mode custom-mode
-                              dired-mode calendar-mode help-mode))
+                              dired-mode calendar-mode help-mode Info-mode))
     (evil-set-initial-state mode 'emacs)))
 "---------------------------------------------------------------------------"
 ;; projectile
