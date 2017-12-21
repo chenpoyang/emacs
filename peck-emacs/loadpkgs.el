@@ -628,7 +628,7 @@
 
   (register-input-method
    "chinese-wbim-wb" "euc-cn" 'chinese-wbim-use-package
-   "五笔" "汉字五笔输入法" "wb.txt"
+   "wubi " "汉字五笔输入法" "wb.txt"
    'my-chinese-wbim-wb-activate-function))
 "---------------------------------------------------------------------------"
 (use-package ecb

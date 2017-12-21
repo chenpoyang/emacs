@@ -3,7 +3,7 @@
 (cd "~/")
 "---------------------------------------------------------------------------"
 (ido-mode 1)
-(hs-minor-mode 1)
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 "---------------------------------------------------------------------------"
 ;; global-auto-revert-mode
 (global-auto-revert-mode 1)
