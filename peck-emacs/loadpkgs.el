@@ -666,3 +666,7 @@
 ;; Get environment variables such as $PATH from the shell
 (use-package exec-path-from-shell)
 "---------------------------------------------------------------------------"
+(use-package paredit
+  :config
+  (add-hook 'prog-mode-hook 'paredit-mode))
+"---------------------------------------------------------------------------"

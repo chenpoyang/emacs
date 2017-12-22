@@ -53,7 +53,7 @@
  '(ns-command-modifier (quote meta))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell projectile evil helm js2-mode php-mode company yasnippet airline-themes powerline all-the-icons-dired company-irony-c-headers flycheck-irony flycheck company-irony ace-window ecb neotree chinese-wbim ag ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-go column-enforce-mode benchmark-init ace-jump-mode ac-php)))
+    (paredit exec-path-from-shell projectile evil helm js2-mode php-mode company yasnippet airline-themes powerline all-the-icons-dired company-irony-c-headers flycheck-irony flycheck company-irony ace-window ecb neotree chinese-wbim ag ace-isearch rjsx-mode youdao-dictionary xref-js2 which-key web-mode use-package swift-mode sourcemap skewer-mode shackle python-environment org-pomodoro org-bullets nodejs-repl mew magit json-mode js2-refactor indium helm-swoop helm-projectile helm-gtags helm-flyspell helm-ag gorepl-mode gore-mode go-autocomplete ggtags erlang emmet-mode elpy doom-themes concurrent composer company-tern company-php company-lua company-go column-enforce-mode benchmark-init ace-jump-mode ac-php)))
  '(projectile-globally-ignored-files (quote ("GPATH" "TAGS" "GRTAGS" "GTAGS")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
