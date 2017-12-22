@@ -359,6 +359,10 @@ PWD is not in a git repo (or the git command is not found)."
 	    (local-set-key "\C-cE" 'create-objc-tags)
             (local-set-key "\C-xz" 'ff-find-other-file)))
 "---------------------------------------------------------------------------"
+;; alpha
+;; (set-frame-parameter (selected-frame) 'alpha '(85 50))
+;; (add-to-list 'default-frame-alist '(alpha 85 50))
+"---------------------------------------------------------------------------"
 ;; .h use c-mode or cpp-mode or objc-mode
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c-mode))
 ;;(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
