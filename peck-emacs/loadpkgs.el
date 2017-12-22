@@ -327,11 +327,6 @@
 ;; python
 (setq python-shell-interpreter "python3")
 
-(use-package jedi
-  :init
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'jedi:ac-setup))
-
 (use-package elpy
   :config
   (elpy-enable))
