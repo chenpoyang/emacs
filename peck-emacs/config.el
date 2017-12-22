@@ -319,6 +319,7 @@ PWD is not in a git repo (or the git command is not found)."
     hs-minor-mode
     elpy-mode
     auto-complete-mode
+    paredit-mode
     company-mode))
 
 (defun purge-minor-modes ()
