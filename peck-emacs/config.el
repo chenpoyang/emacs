@@ -317,6 +317,8 @@ PWD is not in a git repo (or the git command is not found)."
     which-key-mode
     ace-isearch-mode
     hs-minor-mode
+    elpy-mode
+    auto-complete-mode
     company-mode))
 
 (defun purge-minor-modes ()

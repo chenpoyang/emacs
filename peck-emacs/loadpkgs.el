@@ -325,17 +325,26 @@
                               (tern-mode))))
 "---------------------------------------------------------------------------"
 ;; python
-(use-package python-environment
-  :config
-  (add-hook 'python-mode-hook (lambda()
-                                (elpy-mode)
-                                (yas-minor-mode)))
-  ;; while C-c C-c in python file, warning occur
-  (setq python-shell-completion-native-enable nil))
+(setq python-shell-interpreter "python3")
+
+(use-package jedi
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:ac-setup))
 
 (use-package elpy
   :config
   (elpy-enable))
+
+(use-package virtualenvwrapper
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
+
+(add-hook 'python-mode-hook (lambda() (elpy-mode)))
+
+;; while C-c C-c in python file, warning occur
+(setq python-shell-completion-native-enable nil)
 "---------------------------------------------------------------------------"
 ;; emacs-helm
 (use-package helm
@@ -555,7 +564,7 @@
   :init(setq evil-default-state 'emacs)
   :config
   (evil-mode 1)
-  (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode
+  (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode compilation-mode
                               comint-mode erc-mode special-mode
                               git-commit-mode diff-mode custom-mode
                               dired-mode calendar-mode help-mode Info-mode))
