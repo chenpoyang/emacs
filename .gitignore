@@ -25,3 +25,4 @@ images/**
 *.swp
 flyspell*.el
 /init.el.before_ecb*
+ido*
