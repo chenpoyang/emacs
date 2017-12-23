@@ -675,3 +675,8 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 "---------------------------------------------------------------------------"
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (add-hook 'prog-mode-hook 'smartparens-mode))
+"---------------------------------------------------------------------------"
