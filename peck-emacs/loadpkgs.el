@@ -417,6 +417,10 @@
   ;;Optional face for line numbers
   (setq helm-swoop-use-line-number-face t))
 "---------------------------------------------------------------------------"
+(use-package helm-xref
+  :init
+  (setq xref-show-xrefs-function 'helm-xref-show-xrefs))
+"---------------------------------------------------------------------------"
 ;; flyspell
 (use-package flyspell
   :config
