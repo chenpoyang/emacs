@@ -63,6 +63,10 @@
              ("C-j" . nil)
              ("M-j" . emmet-expand-line)))
 "---------------------------------------------------------------------------"
+(use-package tern
+  :config
+  (add-hook 'js2-mode-hook 'tern-mode))
+"---------------------------------------------------------------------------"
 (use-package web-mode
   :defer 5
   :commands web-mode
