@@ -562,7 +562,8 @@
   (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode compilation-mode
                               comint-mode erc-mode special-mode gud-mode dired-mode
                               git-commit-mode diff-mode custom-mode all-the-icons-dired-mode
-                              dired-mode calendar-mode help-mode Info-mode wdired-mode))
+                              dired-mode calendar-mode help-mode Info-mode wdired-mode
+                              inferior-python-mode))
     (evil-set-initial-state mode 'emacs)))
 "---------------------------------------------------------------------------"
 ;; projectile
