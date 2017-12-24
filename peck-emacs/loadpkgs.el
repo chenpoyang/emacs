@@ -102,7 +102,7 @@
   ;;(add-hook 'after-init-hook 'global-company-mode)
   ;;(setq company-global-modes '(not php-mode))
   ;;(setq company-global-modes '(not html-mode))
-  (global-company-mode)
+  (add-hook 'prog-mode-hook 'company-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (setq company-backends (delete 'company-semantic company-backends))
   ;; enable tab-completion with no delay
