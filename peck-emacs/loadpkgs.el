@@ -143,6 +143,7 @@
   (add-hook 'php-mode-hook
             '(lambda ()
                (require 'company-php)
+               (emmet-mode)
                (company-mode t)
                (ac-php-core-eldoc-setup) ;; enable eldoc
                (define-key php-mode-map (kbd "C-]") 'ac-php-find-symbol-at-point) ;; goto define
