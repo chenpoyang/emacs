@@ -592,7 +592,7 @@
                               comint-mode erc-mode special-mode gud-mode dired-mode
                               git-commit-mode diff-mode custom-mode all-the-icons-dired-mode
                               dired-mode calendar-mode help-mode Info-mode wdired-mode
-                              inferior-python-mode))
+                              inferior-python-mode Man-mode))
     (evil-set-initial-state mode 'emacs)))
 "---------------------------------------------------------------------------"
 ;; projectile
