@@ -505,6 +505,11 @@
 "---------------------------------------------------------------------------"
 (use-package org
   :defer 5
+  :bind
+  (("C-c l" . org-store-link)
+   ("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
+   ("C-c b" . org-iswitchb))
   :config
   (setq org-log-done t)
 
@@ -516,9 +521,7 @@
   (add-hook 'org-mode-hook
             (lambda()
               (company-mode)
-              (local-set-key "\C-cl" 'org-store-link)
-              (local-set-key "\C-cw" 'org-pomodoro)
-              (local-set-key "\C-ca" 'org-agenda)))
+              (local-set-key "\C-cw" 'org-pomodoro)))
 
   (setq org-agenda-custom-commands
         '(("h" "Daily habits"
