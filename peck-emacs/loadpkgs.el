@@ -1,4 +1,21 @@
 "---------------------------------------------------------------------------"
+(use-package all-the-icons
+  :init
+  (setq all-the-icons-color-icons t)
+  (setq all-the-icons-for-buffer t))
+"---------------------------------------------------------------------------"
+(use-package all-the-icons-dired
+  :after(all-the-icons)
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+"---------------------------------------------------------------------------"
+(use-package neotree
+  :bind
+  ([f7] . neotree-toggle)
+  :config
+  (setq neo-window-width 30)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+"---------------------------------------------------------------------------"
 ;; theme
 (use-package doom-themes
   :config
@@ -651,20 +668,6 @@
   :config(setq ecb-windows-width 0.15)
   :bind(([f10] . ecb-activate)
         ([C-f10] . ecb-deactivate)))
-"---------------------------------------------------------------------------"
-(use-package all-the-icons
-  :defer 5)
-(use-package all-the-icons-dired
-  :defer 5
-  :after(all-the-icons)
-  :config
-  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-"---------------------------------------------------------------------------"
-(use-package neotree
-  :bind
-  ([f7] . neotree-toggle)
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 "---------------------------------------------------------------------------"
 (use-package composer)
 "---------------------------------------------------------------------------"
