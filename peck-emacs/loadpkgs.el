@@ -113,7 +113,7 @@
   (add-hook 'web-mode-hook
             (lambda()
               (emmet-mode)
-              (local-set-key (kbd "C-c m w") 'web-mode)
+              (global-set-key (kbd "C-c m w") 'web-mode)
               (local-set-key (kbd "C-c m t") 'tern-mode)
               (local-set-key (kbd "C-c m p") 'php-mode)
               (local-set-key (kbd "C-c m e") 'emmet-mode))))
