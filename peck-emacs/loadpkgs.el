@@ -13,7 +13,7 @@
   :bind
   ([f7] . neotree-toggle)
   :config
-  (setq neo-window-width 30)
+  (setq neo-window-width 28)
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 "---------------------------------------------------------------------------"
 ;; theme
