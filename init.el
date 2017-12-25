@@ -21,7 +21,7 @@
   (require 'use-package)
   (setq use-package-always-ensure t))
 
-(setq debug-on-error t)
+;;(setq debug-on-error t)
 "---------------------------------------------------------------------------"
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

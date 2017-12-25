@@ -23,7 +23,7 @@
   (setq doom-themes-enable-italic t)
   (load-theme 'doom-tomorrow-night t)
   (doom-themes-visual-bell-config)
-  (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+;;  (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
   (doom-themes-org-config))
 "---------------------------------------------------------------------------"
 ;; powerline
