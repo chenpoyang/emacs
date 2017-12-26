@@ -340,10 +340,11 @@ PWD is not in a git repo (or the git command is not found)."
 ;; .h .mm files add to objc-mode
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 
-;; header .h add to objc-mode, this cause org unable to export to html file
+;; header .h add to objc-mode
 (add-to-list 'magic-mode-alist
              `(,(lambda ()
-                  (and (equal (file-name-extension buffer-file-name) "h")
+                  (and (stringp buffer-file-name)
+                       (equal (file-name-extension buffer-file-name) "h")
                        (re-search-forward "@\\<interface\\>"
                                           magic-mode-regexp-match-limit t)))
                . objc-mode))
