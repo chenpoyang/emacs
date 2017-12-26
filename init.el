@@ -23,7 +23,7 @@
 
 ;;(setq debug-on-error t)
 
-(setq custom-file "~/.emacs.d/custom-settings.el")
+(setq custom-file "~/.emacs.d/peck-emacs/custom-settings.el")
 (load custom-file t)
 "---------------------------------------------------------------------------"
 ;; calc startup time
