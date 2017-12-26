@@ -75,6 +75,10 @@
   :bind(:map isearch-mode-map
              ("C-;" . ace-isearch-jump-during-isearch)))
 "---------------------------------------------------------------------------"
+(use-package css-mode
+  :init
+  (add-hook 'css-mode-hook 'emmet-mode))
+"---------------------------------------------------------------------------"
 (use-package emmet-mode
   :bind(:map emmet-mode-keymap
              ("C-j" . nil)
@@ -445,6 +449,8 @@
 "---------------------------------------------------------------------------"
 ;; flyspell
 (use-package flyspell
+  :bind(:map flyspell-mode-map
+             ("C-;" . nil))
   :config
   (dolist (hook '(text-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1))))
