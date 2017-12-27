@@ -712,3 +712,7 @@
     (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
     (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)))
 "---------------------------------------------------------------------------"
+(use-package cmake-mode
+  :init
+  (setq load-path (cons (expand-file-name "/dir/with/cmake-mode") load-path)))
+"---------------------------------------------------------------------------"
