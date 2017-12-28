@@ -321,6 +321,7 @@ PWD is not in a git repo (or the git command is not found)."
     elpy-mode
     auto-complete-mode
     paredit-mode
+    rainbow-mode
     company-mode))
 
 (defun purge-minor-modes ()

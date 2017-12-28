@@ -724,3 +724,7 @@
 (use-package expand-region
   :bind("C-=" . er/expand-region))
 "---------------------------------------------------------------------------"
+(use-package rainbow-mode
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-mode))
+"---------------------------------------------------------------------------"
