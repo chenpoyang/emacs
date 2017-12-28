@@ -718,3 +718,6 @@
   :init
   (setq load-path (cons (expand-file-name "/dir/with/cmake-mode") load-path)))
 "---------------------------------------------------------------------------"
+(use-package expand-region
+  :bind("C-=" . er/expand-region))
+"---------------------------------------------------------------------------"
