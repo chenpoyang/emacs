@@ -520,6 +520,7 @@
    ("C-c b" . org-iswitchb))
   :config
   (setq org-log-done t)
+  (setq org-src-tab-acts-natively t)
 
   (defun custom_org_auto_check()
     (org-update-checkbox-count t))
