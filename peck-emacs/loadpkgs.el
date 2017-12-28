@@ -117,7 +117,6 @@
   (add-hook 'web-mode-hook
             (lambda()
               (emmet-mode)
-              (global-set-key (kbd "C-c m w") 'web-mode)
               (local-set-key (kbd "C-c m t") 'tern-mode)
               (local-set-key (kbd "C-c m p") 'php-mode)
               (local-set-key (kbd "C-c m e") 'emmet-mode))))
@@ -601,7 +600,11 @@
                               git-commit-mode diff-mode custom-mode all-the-icons-dired-mode
                               dired-mode calendar-mode help-mode Info-mode wdired-mode
                               inferior-python-mode Man-mode))
-    (evil-set-initial-state mode 'emacs)))
+    (evil-set-initial-state mode 'emacs))
+
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1)))
 "---------------------------------------------------------------------------"
 ;; projectile
 (use-package projectile

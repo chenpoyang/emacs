@@ -6,3 +6,4 @@
 (global-set-key (kbd "C-x t") 'term)
 (global-set-key "\C-cV" 'visit-tags-table)
 (global-set-key (kbd "C-c d r") 'recentf-edit-list)
+(global-set-key (kbd "C-c m w") 'web-mode)
