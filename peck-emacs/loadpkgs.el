@@ -402,14 +402,14 @@
   (with-eval-after-load 'helm-gtags
     ;; C-c d b, C-c d r, use as global keybindings, use M-. instread of C-c d
     ;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
-    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag-from-here)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
     "conflict with helm-swool"
     (define-key ggtags-mode-map (kbd "C-c M-i") nil))
 
   ;; use helm-gtags key binding instread of xref
   (with-eval-after-load 'ggtags
-    (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+    (define-key ggtags-mode-map (kbd "M-.") 'helm-gtags-find-tag-from-here)
     (define-key ggtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
 "---------------------------------------------------------------------------"
 ;; helm-swoop

@@ -4,10 +4,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ace-isearch-function (quote avy-goto-char) t)
- '(ace-isearch-input-length 7 t)
- '(ace-isearch-jump-delay 0.25 t)
- '(ace-isearch-use-jump (quote printing-char) t)
+ '(ace-isearch-function (quote avy-goto-char))
+ '(ace-isearch-input-length 7)
+ '(ace-isearch-jump-delay 0.25)
+ '(ace-isearch-use-jump (quote printing-char))
  '(column-number-mode t)
  '(custom-safe-themes
    (quote
