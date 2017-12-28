@@ -212,6 +212,7 @@
 (use-package flycheck
   :defer 5
   :config
+  (setq flycheck-check-syntax-automatically '(save mode-enable))
   (add-hook 'after-init-hook #'global-flycheck-mode)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
