@@ -725,3 +725,7 @@
 (use-package expand-region
   :bind("C-=" . er/expand-region))
 "---------------------------------------------------------------------------"
+(use-package rainbow-mode
+  :init
+  (add-hook 'css-mode-hook 'rainbow-mode))
+"---------------------------------------------------------------------------"
