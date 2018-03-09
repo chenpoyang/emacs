@@ -37,8 +37,6 @@
  '(safe-local-variable-values (quote ((eval c-set-offset (quote innamespace) 0))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(split-height-threshold nil)
- '(split-width-threshold 0)
  '(tool-bar-mode nil))
 "---------------------------------------------------------------------------"
 (custom-set-faces
