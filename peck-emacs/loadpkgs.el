@@ -405,6 +405,7 @@
     ;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag-from-here)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "C-c u t") 'helm-gtags-update-tags)
     "conflict with helm-swool"
     (define-key ggtags-mode-map (kbd "C-c M-i") nil))
 
