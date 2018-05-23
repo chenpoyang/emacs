@@ -413,6 +413,7 @@
     ;;  (define-key helm-gtags-mode-map (kbd "C-c d") nil)
     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag-from-here)
     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "C-c u t") 'helm-gtags-update-tags)
     "conflict with helm-swool"
     (define-key ggtags-mode-map (kbd "C-c M-i") nil))
 
@@ -740,4 +741,47 @@
 (use-package ace-popup-menu
   :config
   (ace-popup-menu-mode 1))
+"---------------------------------------------------------------------------"
+(use-package csharp-mode
+  :config
+  (use-package omnisharp
+    :init
+    (cond
+     ((string-equal system-type "windows-nt") ; Microsoft Windows
+      (progn
+        (message "Microsoft Windows")))
+     ((string-equal system-type "darwin") ; Mac OS X
+      (progn
+        (message "Mac OS X")
+        (setenv "PATH" (concat (getenv "PATH") ":/Library/Frameworks/Mono.framework/Versions/Current/Commands"))
+        (setq exec-path (append exec-path '("/Library/Frameworks/Mono.framework/Versions/Current/Commands")))))
+     ((string-equal system-type "gnu/linux") ; linux
+      (progn
+        (message "Linux")))))
+
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  (eval-after-load
+      'company
+    '(add-to-list 'company-backends #'company-omnisharp))
+
+  (defun my-csharp-mode-setup ()
+    (omnisharp-mode)
+    (company-mode)
+    (flycheck-mode)
+    (setq indent-tabs-mode nil)
+    (setq c-syntactic-indentation t)
+    (c-set-style "ellemtel")
+    (setq c-basic-offset 4)
+    (setq truncate-lines t)
+    (setq tab-width 4)
+    (setq evil-shift-width 4)
+
+    "csharp-mode README.md recommends this too"
+    "(electric-pair-mode 1)       ;; Emacs 24"
+    (electric-pair-local-mode 1) ;; Emacs 25
+
+    (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+    (local-set-key (kbd "C-c C-c") 'recompile))
+
+  (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
 "---------------------------------------------------------------------------"
