@@ -625,7 +625,8 @@
 ;; helm-projectile
 (use-package helm-projectile
   :config
-  (helm-projectile-on))
+  (helm-projectile-on)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 "---------------------------------------------------------------------------"
 ;; lua
 (use-package company-lua
