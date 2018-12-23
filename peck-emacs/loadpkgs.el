@@ -105,7 +105,9 @@
     (local-set-key '[backtab] 'indent-relative)
     (setq indent-tabs-mode nil)
     (setq web-mode-markup-indent-offset 2
+          web-mode-code-indent-offset 4
           web-mode-css-indent-offset 2
+          web-mode-js-indent-offset 4
           web-mode-code-indent-offset 4))
 
   (add-hook 'web-mode-hook 'bs-web-mode-hook)
@@ -113,6 +115,12 @@
   (setq web-mode-style-padding 2)
   (setq web-mode-script-padding 2)
   (setq web-mode-block-padding 2)
+
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-expanding t)
+  (setq web-mode-enable-css-colorization t)
+
+  (bind-key "C-c C-i" 'web-mode-buffer-indent)
 
   (add-hook 'web-mode-hook
             (lambda()
@@ -157,7 +165,7 @@
   ;; php-indent
   (defun wicked/php-mode-init ()
     "Set some buffer-local variables."
-    (setq case-fold-search t) 
+    (setq case-fold-search t)
     (setq indent-tabs-mode nil)
     (setq fill-column 78)
     (setq c-basic-offset 4)
@@ -264,14 +272,14 @@
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   ;; Better imenu
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
-  
+
   (use-package js2-refactor
     :config
     (add-hook 'js2-mode-hook #'js2-refactor-mode)
     (js2r-add-keybindings-with-prefix "C-c C-r")
     :bind(:map js2-mode-map
                ("C-k" . #'js2r-kill)))
-  
+
   (use-package xref-js2)
 
   (add-hook 'js2-mode-hook (lambda ()
@@ -337,7 +345,7 @@
             (imap-queue-folder     "%queue")
             (imap-trash-folder     "%Trash")
             (smtp-ssl              t)
-            (smtp-auth-list        ("PLAIN" "LOGIN" "CRAM-MD5")) 
+            (smtp-auth-list        ("PLAIN" "LOGIN" "CRAM-MD5"))
             (smtp-user             "chenpoyang")
             (smtp-server           "smtp.163.com")
             (smtp-ssl-port         "465")))))
@@ -617,7 +625,8 @@
 ;; helm-projectile
 (use-package helm-projectile
   :config
-  (helm-projectile-on))
+  (helm-projectile-on)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 "---------------------------------------------------------------------------"
 ;; lua
 (use-package company-lua
@@ -670,7 +679,7 @@
 (use-package chinese-wbim
   :config
   (defun my-chinese-wbim-wb-activate-function ()
-    (add-hook 'chinese-wbim-active-hook 
+    (add-hook 'chinese-wbim-active-hook
               (lambda ()
                 (let ((map (chinese-wbim-mode-map)))
                   (define-key map "," 'chinese-wbim-previous-page)

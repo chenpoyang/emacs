@@ -19,7 +19,12 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 "---------------------------------------------------------------------------"
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH"))
+        (setq exec-path (append exec-path '("/usr/local/bin"))))
+(setenv "PATH" (concat "/usr/local/git-2.16.0/bin:" (getenv "PATH"))
+        (setq exec-path (append exec-path '("/usr/local/git-2.16.0/bin"))))
+(setenv "PATH" (concat "/home/peck/.nvm/versions/node/v8.11.0/bin:" (getenv "PATH"))
+        (setq exec-path (append exec-path '("/home/peck/.nvm/versions/node/v8.11.0/bin"))))
 "---------------------------------------------------------------------------"
 ;; maxmize
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
