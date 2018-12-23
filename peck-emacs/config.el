@@ -31,6 +31,7 @@
 (prefer-coding-system 'utf-8)
 "---------------------------------------------------------------------------"
 (setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
 ;; 指针颜色设置为白色
 (set-cursor-color "white")
 ;; 鼠标颜色设置为白色
